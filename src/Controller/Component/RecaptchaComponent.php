@@ -3,7 +3,7 @@ namespace Crabstudio\Recaptcha\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\Controller\ComponentRegistry;
-use App\ReCaptcha\Recaptcha;
+use Crabstudio\ReCaptcha\Recaptcha\Recaptcha;
 use Cake\Core\Configure;
 use Crabstudio\Recaptcha\Validation\RecaptchaValidator;
 
