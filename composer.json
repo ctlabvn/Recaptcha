@@ -1,0 +1,42 @@
+{
+    "name": "crabstudio/recaptcha",
+    "type": "cakephp-plugin",
+    "description": "Easily use Google Recaptcha in CakePHP 3 projects",
+    "keywords": [
+        "cakephp",
+        "bootstrap",
+        "google",
+        "recaptcha",
+        "captcha",
+        "crabstudio",
+        "anhtuank7c"
+    ],
+    "homepage": "https://github.com/crabstudio/recaptcha",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "anhtuank7c",
+            "email": "anhtuank7c@hotmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/crabstudio/recaptcha/issues",
+        "source": "https://github.com/crabstudio/recaptcha",
+        "wiki": "https://github.com/google/recaptcha"
+    },
+    "require": {
+        "php": ">=5.4",
+        "cakephp/cakephp": "~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "cakephp/cakephp-codesniffer": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Crabstudio\\Recaptcha\\": "src"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
