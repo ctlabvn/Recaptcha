@@ -1,9 +1,9 @@
 
-# CakePHP 3 Google Recaptcha
+# CakePHP 3: Integrate Google Recaptcha v2
 
 ## Introduction
 
-This plugin make integrate Google Recaptcha v2 to your CakePHP v3.x project
+Integrate Google Recaptcha v2 to your CakePHP v3.x project
 
 ## Installation
 
