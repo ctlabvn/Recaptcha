@@ -8,7 +8,6 @@
  * @link     https://crabstudio.info/
  */
 use Cake\Core\Configure;
-use Crabstudio\Recaptcha\Validation\ConfigValidator;
 
 // if your app did not load config, the defaut test key will be used
 if (null == Configure::read('Recaptcha')) {

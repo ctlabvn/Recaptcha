@@ -24,10 +24,10 @@
  * THE SOFTWARE.
  */
 
-namespace Crabstudio\ReCaptcha\ReCaptcha\RequestMethod;
+namespace Crabstudio\Recaptcha\ReCaptcha\RequestMethod;
 
-use Crabstudio\ReCaptcha\ReCaptcha\RequestMethod;
-use Crabstudio\ReCaptcha\ReCaptcha\RequestParameters;
+use Crabstudio\Recaptcha\ReCaptcha\RequestMethod;
+use Crabstudio\Recaptcha\ReCaptcha\RequestParameters;
 
 /**
  * Sends cURL request to the reCAPTCHA service.

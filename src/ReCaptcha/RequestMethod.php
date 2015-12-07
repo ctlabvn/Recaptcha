@@ -24,9 +24,9 @@
  * THE SOFTWARE.
  */
 
-namespace Crabstudio\ReCaptcha\ReCaptcha;
+namespace Crabstudio\Recaptcha\ReCaptcha;
 
-use Crabstudio\ReCaptcha\ReCaptcha\RequestParameters;
+use Crabstudio\Recaptcha\ReCaptcha\RequestParameters;
 
 /**
  * Method used to send the request to the service.

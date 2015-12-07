@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace Crabstudio\ReCaptcha\ReCaptcha\RequestMethod;
+namespace Crabstudio\Recaptcha\ReCaptcha\RequestMethod;
 
 /**
  * Convenience wrapper around the cURL functions to allow mocking.
