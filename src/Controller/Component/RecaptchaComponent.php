@@ -32,11 +32,9 @@ class RecaptchaComponent extends Component
             throw new \Exception(__d('recaptcha', 'One of your recaptcha config value is incorrect'));
         }
         $this->_defaultConfig = array_merge($this->_defaultConfig, Configure::read('Recaptcha'));
-        // dump($this->_defaultConfig['enable']);
-        if($this->_defaultConfig['enable'] === '0') {
-            return;
+        if($this->_defaultConfig['enable'] === '1') {
+	        $this->recaptcha = new ReCaptcha($this->_defaultConfig['secret']);
         }
-        $this->recaptcha = new ReCaptcha($this->_defaultConfig['secret']);
         $this->_registry->getController()->viewBuilder()->helpers(['Crabstudio/Recaptcha.Recaptcha']);
     }
 
