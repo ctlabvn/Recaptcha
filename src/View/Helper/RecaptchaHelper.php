@@ -37,7 +37,7 @@ class RecaptchaHelper extends Helper
     }
 
     public function display() {
-        if(!$this->_defaultConfig['enable']) {
+        if($this->_defaultConfig['enable'] === '0') {
             return '';
         }
         extract($this->_defaultConfig);

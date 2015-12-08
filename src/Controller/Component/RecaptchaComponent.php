@@ -39,7 +39,7 @@ class RecaptchaComponent extends Component
     }
 
     public function verify() {
-        if(!$this->_defaultConfig['enable']) {
+        if($this->_defaultConfig['enable'] === '0') {
             return true;
         }
         $controller = $this->_registry->getController();
