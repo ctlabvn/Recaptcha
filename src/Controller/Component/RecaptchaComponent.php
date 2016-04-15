@@ -1,11 +1,11 @@
 <?php
-namespace Crabstudio\Recaptcha\Controller\Component;
+namespace Recaptcha\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\Controller\ComponentRegistry;
-use Crabstudio\Recaptcha\ReCaptcha\ReCaptcha;
+use Recaptcha\ReCaptcha\ReCaptcha;
 use Cake\Core\Configure;
-use Crabstudio\Recaptcha\Validation\RecaptchaValidator;
+use Recaptcha\Validation\RecaptchaValidator;
 
 /**
  * Recaptcha component

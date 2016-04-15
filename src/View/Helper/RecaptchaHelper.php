@@ -1,11 +1,11 @@
 <?php
-namespace Crabstudio\Recaptcha\View\Helper;
+namespace Recaptcha\View\Helper;
 
 use Cake\View\Helper;
 use Cake\View\View;
 use Cake\I18n\I18n;
 use Cake\Core\Configure;
-use Crabstudio\Recaptcha\Validation\RecaptchaValidator;
+use Recaptcha\Validation\RecaptchaValidator;
 
 /**
  * Recaptcha helper

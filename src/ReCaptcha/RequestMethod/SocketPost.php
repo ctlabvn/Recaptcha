@@ -24,10 +24,10 @@
  * THE SOFTWARE.
  */
 
-namespace Crabstudio\Recaptcha\ReCaptcha\RequestMethod;
+namespace Recaptcha\ReCaptcha\RequestMethod;
 
-use Crabstudio\Recaptcha\ReCaptcha\RequestMethod;
-use Crabstudio\Recaptcha\ReCaptcha\RequestParameters;
+use Recaptcha\ReCaptcha\RequestMethod;
+use Recaptcha\ReCaptcha\RequestParameters;
 
 /**
  * Sends a POST request to the reCAPTCHA service, but makes use of fsockopen()

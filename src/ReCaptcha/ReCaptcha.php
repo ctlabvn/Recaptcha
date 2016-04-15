@@ -24,11 +24,11 @@
  * THE SOFTWARE.
  */
 
-namespace Crabstudio\Recaptcha\ReCaptcha;
+namespace Recaptcha\ReCaptcha;
 
-use Crabstudio\Recaptcha\ReCaptcha\Response;
-use Crabstudio\Recaptcha\ReCaptcha\RequestParameters;
-use Crabstudio\Recaptcha\ReCaptcha\RequestMethod;
+use Recaptcha\ReCaptcha\Response;
+use Recaptcha\ReCaptcha\RequestParameters;
+use Recaptcha\ReCaptcha\RequestMethod;
 
 /**
  * reCAPTCHA client.

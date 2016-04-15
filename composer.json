@@ -11,6 +11,9 @@
         "crabstudio",
         "anhtuank7c"
     ],
+    "suggest": {
+        "crabstudio/email-queue": "Allows you to simple send bulk email"
+    },
     "homepage": "https://github.com/crabstudio/recaptcha",
     "license": "MIT",
     "authors": [
@@ -34,7 +37,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Crabstudio\\Recaptcha\\": "src"
+            "Recaptcha\\": "src"
         }
     },
     "minimum-stability": "stable",

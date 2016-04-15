@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-namespace Crabstudio\Recaptcha\ReCaptcha;
+namespace Recaptcha\ReCaptcha;
 
 /**
  * Stores and formats the parameters for the request to the reCAPTCHA service.

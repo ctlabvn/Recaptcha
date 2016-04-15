@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 
-namespace Crabstudio\Recaptcha\ReCaptcha\RequestMethod;
+namespace Recaptcha\ReCaptcha\RequestMethod;
 
 /**
  * Convenience wrapper around native socket and file functions to allow for

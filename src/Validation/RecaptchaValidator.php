@@ -8,7 +8,7 @@
  * @link     http://crabstudio.info/
  */
 
-namespace Crabstudio\Recaptcha\Validation;
+namespace Recaptcha\Validation;
 
 use Cake\Validation\Validator;
 

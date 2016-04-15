@@ -24,9 +24,9 @@
  * THE SOFTWARE.
  */
 
-namespace Crabstudio\Recaptcha\ReCaptcha;
+namespace Recaptcha\ReCaptcha;
 
-use Crabstudio\Recaptcha\ReCaptcha\Response;
+use Recaptcha\ReCaptcha\Response;
 
 /**
  * The response returned from the service.

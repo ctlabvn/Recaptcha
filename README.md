@@ -31,7 +31,7 @@ composer update
 
 Add this line to **Your_project\config\bootstrap.php**
 ```
-Plugin::load('Crabstudio/Recaptcha', ['bootstrap' => true]);
+Plugin::load('Recaptcha', ['bootstrap' => true]);
 ```
 
 ## Configure
@@ -57,7 +57,7 @@ In your controller initialize function
 ```
 // Example, i just use recaptcha for function forgotPassword
 if($this->request->action === 'forgotPassword') {
-    $this->loadComponent('Crabstudio/Recaptcha.Recaptcha');
+    $this->loadComponent('Recaptcha.Recaptcha');
 }
 ```
 
