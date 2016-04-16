@@ -35,7 +35,7 @@ class RecaptchaComponent extends Component
         if($this->_defaultConfig['enable'] === '1') {
 	        $this->recaptcha = new ReCaptcha($this->_defaultConfig['secret']);
         }
-        $this->_registry->getController()->viewBuilder()->helpers(['Crabstudio/Recaptcha.Recaptcha']);
+        $this->_registry->getController()->viewBuilder()->helpers(['Recaptcha.Recaptcha']);
     }
 
     public function verify() {
