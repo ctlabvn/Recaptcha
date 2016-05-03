@@ -43,7 +43,7 @@ $recaptcha = [
         'type' => 'image',  //available image/audio
         'theme' => 'light', //available light/dark
         'lang' => 'vi',      //if not exist, plugin in will use your default locale
-        'enable' => '1',     //available 0/1 mean disabled/enabled
+        'enable' => true,     //available true/false
         'sitekey' => 'your_site_key', //if you don't have, get one: https://www.google.com/recaptcha/intro/index.html
         'secret' => 'your_secret',
     ]
@@ -67,7 +67,7 @@ Display recaptcha in your view:
 ```
     <?= $this->Form->create()?>
     <?= $this->Form->input('email')?>
-    <?= $this->Recaptcha->display()?>  // Display recaptcha box in your view, if configure enable = 0, nothing display here
+    <?= $this->Recaptcha->display()?>  // Display recaptcha box in your view, if configure enable = false, nothing display here
     <?= $this->Form->submit()?>
     <?= $this->Form->end()?>
 ```
@@ -77,7 +77,7 @@ Verify in your controller function
 ```
     public function forgotPassword() {
         if($this->request->is('post')){
-            if($this->Recaptcha->verify()) { // if configure enable = 0, always return true
+            if($this->Recaptcha->verify()) { // if configure enable = false, always return true
                 //do something here
             }
             $this->Flash->error(__('Please pass Google Recaptcha first'));

@@ -18,7 +18,7 @@ if (null == Configure::read('Recaptcha')) {
             'secret' => '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
             'theme' => 'light',
             'type' => 'image',
-            'enable' => '1'
+            'enable' => true
         ]
     ];
     Configure::write($config);
