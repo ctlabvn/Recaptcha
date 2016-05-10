@@ -48,6 +48,12 @@ class CurlPost implements RequestMethod
      */
     private $curl;
 
+    /**
+     * __construct function
+     *
+     * @param Curl $curl curl
+     * @return Curl
+     */
     public function __construct(Curl $curl = null)
     {
         if (!is_null($curl)) {
@@ -67,17 +73,17 @@ class CurlPost implements RequestMethod
     {
         $handle = $this->curl->init(self::SITE_VERIFY_URL);
 
-        $options = array(
+        $options = [
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => $params->toQueryString(),
-            CURLOPT_HTTPHEADER => array(
+            CURLOPT_HTTPHEADER => [
                 'Content-Type: application/x-www-form-urlencoded'
-            ),
+            ],
             CURLINFO_HEADER_OUT => false,
             CURLOPT_HEADER => false,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => true
-        );
+        ];
         $this->curl->setoptArray($handle, $options);
 
         $response = $this->curl->exec($handle);

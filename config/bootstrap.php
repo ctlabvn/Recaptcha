@@ -10,8 +10,7 @@
 use Cake\Core\Configure;
 
 // if your app did not load config, the defaut test key will be used
-if (null == Configure::read('Recaptcha')) {
-
+if (!Configure::check('Recaptcha')) {
     $config = [
         'Recaptcha' => [
             'sitekey' => '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',

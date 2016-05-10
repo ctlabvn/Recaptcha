@@ -15,7 +15,8 @@ use Cake\Validation\Validator;
 /**
  * RecaptchaValidator
  */
-class RecaptchaValidator extends Validator {
+class RecaptchaValidator extends Validator
+{
 
     protected $validList = [
         'type' => [
@@ -33,25 +34,24 @@ class RecaptchaValidator extends Validator {
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this
-                ->requirePresence('sitekey')
-                ->notEmpty('sitekey', __d('recaptcha', 'A sitekey cannot be blank.'))
-                ->requirePresence('secret')
-                ->notEmpty('secret', __d('recaptcha', 'A secret cannot be blank.'))
-                ->add('theme', [
-                    'inList' => [
-                        'rule' => ['inList', $this->validList['theme']],
-                        'message' => __d('recaptcha', 'The theme should be in the following authorized theme ' . implode(',', $this->validList['theme'])),
-                    ]
-                ])
-                ->add('type', [
-                    'inList' => [
-                        'rule' => ['inList', $this->validList['type']],
-                        'message' => __d('recaptcha', 'The type should be in the following authorized type ' . implode(',', $this->validList['type'])),
-                    ]
-        ]);
+            ->requirePresence('sitekey')
+            ->notEmpty('sitekey', __d('recaptcha', 'A sitekey cannot be blank.'))
+            ->requirePresence('secret')
+            ->notEmpty('secret', __d('recaptcha', 'A secret cannot be blank.'))
+            ->add('theme', [
+                'inList' => [
+                    'rule' => ['inList', $this->validList['theme']],
+                    'message' => __d('recaptcha', 'The theme should be in the following authorized theme ' . implode(',', $this->validList['theme'])),
+                ]
+            ])
+            ->add('type', [
+                'inList' => [
+                    'rule' => ['inList', $this->validList['type']],
+                    'message' => __d('recaptcha', 'The type should be in the following authorized type ' . implode(',', $this->validList['type'])),
+                ]]);
     }
-
 }

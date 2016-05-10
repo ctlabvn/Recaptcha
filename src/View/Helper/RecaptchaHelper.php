@@ -1,10 +1,10 @@
 <?php
 namespace Recaptcha\View\Helper;
 
+use Cake\Core\Configure;
+use Cake\I18n\I18n;
 use Cake\View\Helper;
 use Cake\View\View;
-use Cake\I18n\I18n;
-use Cake\Core\Configure;
 use Recaptcha\Validation\RecaptchaValidator;
 
 /**
@@ -16,18 +16,25 @@ class RecaptchaHelper extends Helper
     /**
      * Default configuration.
      *
-     * @var array
+     * @param array default config
      */
     protected $_defaultConfig = [
         'type' => 'image',
         'theme' => 'light'
     ];
 
-    public function __construct(View $view, array $config = []) {
+    /**
+     * __construct function
+     *
+     * @param Cake\View\View $view View
+     * @param array $config config
+     */
+    public function __construct(View $view, array $config = [])
+    {
         parent::__construct($view, $config);
 
         $errors = (new RecaptchaValidator())->errors(Configure::read('Recaptcha'));
-        if(!empty($errors)) {
+        if (!empty($errors)) {
             throw new \Exception(__d('recaptcha', 'One of your recaptcha config value is incorrect'));
         }
         $this->_defaultConfig = array_merge($this->_defaultConfig, Configure::read('Recaptcha'));
@@ -36,8 +43,13 @@ class RecaptchaHelper extends Helper
         }
     }
 
-    public function display() {
-        if($this->_defaultConfig['enable'] === '0') {
+    /**
+     * Display recaptcha function
+     * @return string
+     */
+    public function display()
+    {
+        if (!$this->_defaultConfig['enable']) {
             return '';
         }
         extract($this->_defaultConfig);

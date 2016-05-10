@@ -35,7 +35,7 @@ class Response
 {
     /**
      * Succes or failure.
-     * @var boolean
+     * @var bool
      */
     private $success = false;
 
@@ -43,12 +43,12 @@ class Response
      * Error code strings.
      * @var array
      */
-    private $errorCodes = array();
+    private $errorCodes = [];
 
     /**
      * Build the response from the expected JSON returned by the service.
      *
-     * @param string $json
+     * @param string $json json
      * @return \ReCaptcha\Response
      */
     public static function fromJson($json)
@@ -56,7 +56,7 @@ class Response
         $responseData = json_decode($json, true);
 
         if (!$responseData) {
-            return new Response(false, array('invalid-json'));
+            return new Response(false, ['invalid-json']);
         }
 
         if (isset($responseData['success']) && $responseData['success'] == true) {
@@ -73,10 +73,10 @@ class Response
     /**
      * Constructor.
      *
-     * @param boolean $success
-     * @param array $errorCodes
+     * @param bool $success success
+     * @param array $errorCodes error code
      */
-    public function __construct($success, array $errorCodes = array())
+    public function __construct($success, array $errorCodes = [])
     {
         $this->success = $success;
         $this->errorCodes = $errorCodes;
@@ -85,7 +85,7 @@ class Response
     /**
      * Is success?
      *
-     * @return boolean
+     * @return bool
      */
     public function isSuccess()
     {

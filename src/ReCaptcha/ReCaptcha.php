@@ -26,9 +26,9 @@
 
 namespace Recaptcha\ReCaptcha;
 
-use Recaptcha\ReCaptcha\Response;
-use Recaptcha\ReCaptcha\RequestParameters;
 use Recaptcha\ReCaptcha\RequestMethod;
+use Recaptcha\ReCaptcha\RequestParameters;
+use Recaptcha\ReCaptcha\Response;
 
 /**
  * reCAPTCHA client.
@@ -90,7 +90,7 @@ class ReCaptcha
     {
         // Discard empty solution submissions
         if (empty($response)) {
-            $recaptchaResponse = new Response(false, array('missing-input-response'));
+            $recaptchaResponse = new Response(false, ['missing-input-response']);
             return $recaptchaResponse;
         }
 
