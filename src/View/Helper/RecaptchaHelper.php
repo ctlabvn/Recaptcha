@@ -54,8 +54,8 @@ class RecaptchaHelper extends Helper
         }
         extract($this->_defaultConfig);
         return <<<recaptcha
-            <div class="g-recaptcha" data-sitekey="$sitekey" data-theme="$theme" data-type="$type"></div>
             <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=$lang"></script>
+            <div class="g-recaptcha" data-sitekey="$sitekey" data-theme="$theme" data-type="$type" async defer></div>
 <noscript>
   <div>
     <div style="width: 302px; height: 422px; position: relative;">
