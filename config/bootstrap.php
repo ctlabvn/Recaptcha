@@ -8,6 +8,7 @@
  * @link     https://crabstudio.info/
  */
 use Cake\Core\Configure;
+use Cake\I18n\I18n;
 
 // if your app did not load config, the defaut test key will be used
 if (!Configure::check('Recaptcha')) {
@@ -21,4 +22,7 @@ if (!Configure::check('Recaptcha')) {
         ]
     ];
     Configure::write($config);
+}
+if (!Configure::check('Recaptcha.lang')) {
+    Configure::write('Recaptcha.lang', I18n::locale());
 }

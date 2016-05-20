@@ -2,32 +2,14 @@
 namespace Recaptcha\Controller\Component;
 
 use Cake\Controller\Component;
-use Cake\Controller\ComponentRegistry;
 use Cake\Core\Configure;
-use Recaptcha\ReCaptcha\ReCaptcha;
-use Recaptcha\Validation\RecaptchaValidator;
+use Cake\Network\Http\Client;
 
 /**
  * Recaptcha component
  */
 class RecaptchaComponent extends Component
 {
-
-    /**
-     * Default configuration.
-     *
-     * @var array default
-     */
-    protected $_defaultConfig = [
-        'type' => 'image',
-        'theme' => 'light'
-    ];
-
-    /**
-     * @var ReCaptcha $recaptcha
-     */
-    private $recaptcha;
-
     /**
      * initialize
      * @param array $config config
@@ -35,30 +17,26 @@ class RecaptchaComponent extends Component
      */
     public function initialize(array $config = [])
     {
-        $errors = (new RecaptchaValidator())->errors(Configure::read('Recaptcha'));
-        if (!empty($errors)) {
-            throw new \Exception(__d('recaptcha', 'One of your recaptcha config value is incorrect'));
-        }
-        $this->_defaultConfig = array_merge($this->_defaultConfig, Configure::read('Recaptcha'));
-        if ($this->_defaultConfig['enable']) {
-            $this->recaptcha = new ReCaptcha($this->_defaultConfig['secret']);
-        }
         $this->_registry->getController()->viewBuilder()->helpers(['Recaptcha.Recaptcha']);
     }
 
     /**
-     * verify
+     * verify recaptcha
      * @return bool
      */
     public function verify()
     {
-        if (!$this->_defaultConfig['enable']) {
+        if (!Configure::readOrFail('Recaptcha.enable')) {
             return true;
         }
         $controller = $this->_registry->getController();
         if (isset($controller->request->data['g-recaptcha-response'])) {
-            $resp = $this->recaptcha->verify($controller->request->data['g-recaptcha-response'], $controller->request->clientIp());
-            return $resp->isSuccess();
+            $response = (new Client())->post('https://www.google.com/recaptcha/api/siteverify', [
+                'secret' => Configure::readOrFail('Recaptcha.secret'),
+                'response' => $controller->request->data['g-recaptcha-response'],
+                'remoteip' => $controller->request->clientIp()
+            ]);
+            return json_decode($response->body)->success;
         }
         return false;
     }
