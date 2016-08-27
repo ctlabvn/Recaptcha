@@ -35,7 +35,7 @@ composer update
 
 From command line:
 ```
-bin/cake plugin load Authenticate
+bin/cake plugin load Recaptcha
 ```
 
 Or this line to the end of **Your_project\config\bootstrap.php**

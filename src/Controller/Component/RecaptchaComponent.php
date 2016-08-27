@@ -2,8 +2,8 @@
 namespace Recaptcha\Controller\Component;
 
 use Cake\Controller\Component;
-use Cake\Network\Http\Client;
 use Cake\I18n\I18n;
+use Cake\Network\Http\Client;
 
 /**
  * Recaptcha component
@@ -59,6 +59,7 @@ class RecaptchaComponent extends Component
 
             return json_decode($response->body)->success;
         }
+
         return false;
     }
 }
