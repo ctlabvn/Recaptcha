@@ -38,31 +38,18 @@ Add this line to **Your_project\config\bootstrap.php**
 Plugin::load('Recaptcha', ['bootstrap' => true]);
 ```
 
-## Configure
+## Load Component and Configure
 
-Write to your configure:
+Override default configure from loadComponent:
 ```
-$recaptcha = [
-    'Recaptcha' => [
-        'type' => 'image',  //available image/audio
-        'theme' => 'light', //available light/dark
-        'lang' => 'vi',      //if not exist, plugin in will use your default locale
-        'enable' => true,     //available true/false
-        'sitekey' => 'your_site_key', //if you don't have, get one: https://www.google.com/recaptcha/intro/index.html
-        'secret' => 'your_secret',
-    ]
-];
-Cake\Core\Configure::write($recaptcha);
-```
-
-## Load component
-
-In your controller initialize function
-```
-// Example, i just use recaptcha for function forgotPassword
-if($this->request->action === 'forgotPassword') {
-    $this->loadComponent('Recaptcha.Recaptcha');
-}
+$this->loadComponent('Recaptcha.Recaptcha', [
+    'enable' => true,     //available true/false
+    'sitekey' => 'your_site_key', //if you don't have, get one: https://www.google.com/recaptcha/intro/index.html
+    'secret' => 'your_secret',
+    'type' => 'image',  //available image/audio
+    'theme' => 'light', //available light/dark
+    'lang' => 'vi',      //if not exist, plugin in will use your default locale
+]);
 ```
 
 ## Usage
@@ -71,13 +58,12 @@ Display recaptcha in your view:
 ```
     <?= $this->Form->create()?>
     <?= $this->Form->input('email')?>
-    <?= $this->Recaptcha->display()?>  // Display recaptcha box in your view, if configure enable = false, nothing display here
+    <?= $this->Recaptcha->display()?>  // Display recaptcha box in your view, if configure enable = false, nothing to display here
     <?= $this->Form->submit()?>
     <?= $this->Form->end()?>
 ```
 
 Verify in your controller function
-
 ```
     public function forgotPassword() {
         if($this->request->is('post')){

@@ -1,8 +1,7 @@
 <?php
 namespace Recaptcha\View\Helper;
 
-use Cake\Core\Configure;
-use Cake\I18n\I18n;
+use Cake\Console\ConsoleIo;
 use Cake\View\Helper;
 
 /**
@@ -11,26 +10,42 @@ use Cake\View\Helper;
 class RecaptchaHelper extends Helper
 {
     /**
+     * Default config for this helper.
+     *
+     * @var array
+     */
+    protected $_defaultConfig = [];
+
+    /**
+     * Constructor.
+     *
+     * @param \Cake\Console\ConsoleIo $io The ConsoleIo instance to use.
+     * @param array $config The settings for this helper.
+     */
+    public function __construct(ConsoleIo $io, array $config = [])
+    {
+        $this->_io = $io;
+        $this->config($config);
+    }
+
+    /**
      * Display recaptcha function
      * @return string
      */
     public function display()
     {
-        if (!Configure::readOrFail('Recaptcha.enable')) {
+        if (!$this->_defaultConfig('enable')) {
             return false;
         }
-        $sitekey = Configure::readOrFail('Recaptcha.sitekey');
-        $lang = Configure::readOrFail('Recaptcha.lang');
-        $theme = Configure::readOrFail('Recaptcha.theme');
-        $type = Configure::readOrFail('Recaptcha.type');
+
         return <<<EOF
-<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=$lang"></script>
-<div class="g-recaptcha" data-sitekey="$sitekey" data-theme="$theme" data-type="$type" async defer></div>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl={$this->_defaultConfig('lang')}"></script>
+<div class="g-recaptcha" data-sitekey="{$this->_defaultConfig('sitekey')}" data-theme="{$this->_defaultConfig('theme')}" data-type="{$this->_defaultConfig('type')}" async defer></div>
 <noscript>
   <div>
     <div style="width: 302px; height: 422px; position: relative;">
       <div style="width: 302px; height: 422px; position: absolute;">
-        <iframe src="https://www.google.com/recaptcha/api/fallback?k=$sitekey"
+        <iframe src="https://www.google.com/recaptcha/api/fallback?k={$this->_defaultConfig('sitekey')}"
                 frameborder="0" scrolling="no"
                 style="width: 302px; height:422px; border-style: none;">
         </iframe>
