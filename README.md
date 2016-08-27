@@ -33,7 +33,12 @@ composer update
 
 ## Load plugin
 
-Add this line to **Your_project\config\bootstrap.php**
+From command line:
+```
+bin/cake plugin load Authenticate
+```
+
+Or this line to the end of **Your_project\config\bootstrap.php**
 ```
 Plugin::load('Recaptcha', ['bootstrap' => true]);
 ```
