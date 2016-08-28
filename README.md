@@ -1,13 +1,9 @@
 [![Build Status](https://travis-ci.org/crabstudio/Recaptcha.svg?branch=master)](https://travis-ci.org/crabstudio/Recaptcha) [![Latest Stable Version](https://poser.pugx.org/crabstudio/recaptcha/v/stable)](https://packagist.org/packages/crabstudio/recaptcha) [![Total Downloads](https://poser.pugx.org/crabstudio/recaptcha/downloads)](https://packagist.org/packages/crabstudio/recaptcha) [![Latest Unstable Version](https://poser.pugx.org/crabstudio/recaptcha/v/unstable)](https://packagist.org/packages/crabstudio/recaptcha) [![License](https://poser.pugx.org/crabstudio/recaptcha/license)](https://packagist.org/packages/crabstudio/recaptcha)
-# CakePHP 3: Integrate Google Recaptcha v2
-
-## Introduction
-
-Integrate Google Recaptcha v2 to your CakePHP v3.x project
+# Integrate Google Recaptcha v2 to your CakePHP v3.2+ project
 
 ## Donate
 
-Buy me a cup of coffee [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anhtuank7c%40hotmail%2ecom&lc=US&item_name=Crabstudio%20CakePHP%203%20%2d%20FlatAdmin%20Skeleton&item_number=crabstudio%2dcakephp%2dskeleton&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
+Support me [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anhtuank7c%40hotmail%2ecom&lc=US&item_name=Crabstudio%20CakePHP%203%20%2d%20FlatAdmin%20Skeleton&item_number=crabstudio%2dcakephp%2dskeleton&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
 
 ## Installation
 
@@ -22,7 +18,7 @@ Or add the following lines to your application's **composer.json**:
 
 ```
 "require": {
-    "crabstudio/recaptcha": "^1.0"
+    "crabstudio/recaptcha": "^2.0"
 }
 ```
 followed by the command:
