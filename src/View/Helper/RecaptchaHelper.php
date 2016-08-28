@@ -1,7 +1,6 @@
 <?php
 namespace Recaptcha\View\Helper;
 
-use Cake\Console\ConsoleIo;
 use Cake\View\Helper;
 
 /**
@@ -10,21 +9,13 @@ use Cake\View\Helper;
 class RecaptchaHelper extends Helper
 {
     /**
-     * Default config for this helper.
-     *
-     * @var array
-     */
-    protected $_defaultConfig = [];
-
-    /**
      * Constructor.
      *
-     * @param \Cake\Console\ConsoleIo $io The ConsoleIo instance to use.
      * @param array $config The settings for this helper.
+     * @return void
      */
-    public function __construct(ConsoleIo $io, array $config = [])
+    public function initialize(array $config = [])
     {
-        $this->_io = $io;
         $this->config($config);
     }
 
@@ -34,18 +25,19 @@ class RecaptchaHelper extends Helper
      */
     public function display()
     {
-        if (!$this->_defaultConfig('enable')) {
+        $recaptcha = $this->config();
+        if (!$recaptcha['enable']) {
             return false;
         }
 
         return <<<EOF
-<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl={$this->_defaultConfig('lang')}"></script>
-<div class="g-recaptcha" data-sitekey="{$this->_defaultConfig('sitekey')}" data-theme="{$this->_defaultConfig('theme')}" data-type="{$this->_defaultConfig('type')}" async defer></div>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl={$recaptcha['lang']}"></script>
+<div class="g-recaptcha" data-sitekey="{$recaptcha['sitekey']}" data-theme="{$recaptcha['theme']}" data-type="{$recaptcha['type']}" async defer></div>
 <noscript>
   <div>
     <div style="width: 302px; height: 422px; position: relative;">
       <div style="width: 302px; height: 422px; position: absolute;">
-        <iframe src="https://www.google.com/recaptcha/api/fallback?k={$this->_defaultConfig('sitekey')}"
+        <iframe src="https://www.google.com/recaptcha/api/fallback?k={$recaptcha['sitekey']}"
                 frameborder="0" scrolling="no"
                 style="width: 302px; height:422px; border-style: none;">
         </iframe>

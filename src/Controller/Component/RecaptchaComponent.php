@@ -24,6 +24,7 @@ class RecaptchaComponent extends Component
         'theme' => 'light',
         'type' => 'image',
         'enable' => true,
+        'lang' => 'en'
     ];
 
     /**
@@ -33,11 +34,8 @@ class RecaptchaComponent extends Component
      */
     public function initialize(array $config = [])
     {
-        if (empty($config['lang'])) {
-            array_push($config, ['lang' => I18n::locale()]);
-        }
         $this->config($config);
-        $this->_registry->getController()->viewBuilder()->helpers(['Recaptcha.Recaptcha' => ['config' => $this->_defaultConfig]]);
+        $this->_registry->getController()->viewBuilder()->helpers(['Recaptcha.Recaptcha' => $this->_config]);
     }
 
     /**
@@ -46,13 +44,13 @@ class RecaptchaComponent extends Component
      */
     public function verify()
     {
-        if (!$this->_defaultConfig['enable']) {
+        if (!$this->_config['enable']) {
             return true;
         }
         $controller = $this->_registry->getController();
         if (isset($controller->request->data['g-recaptcha-response'])) {
             $response = (new Client())->post('https://www.google.com/recaptcha/api/siteverify', [
-                'secret' => $this->_defaultConfig['secret'],
+                'secret' => $this->_config['secret'],
                 'response' => $controller->request->data['g-recaptcha-response'],
                 'remoteip' => $controller->request->clientIp()
             ]);

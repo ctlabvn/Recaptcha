@@ -48,12 +48,12 @@ Plugin::load('Recaptcha', ['bootstrap' => true]);
 Override default configure from loadComponent:
 ```
 $this->loadComponent('Recaptcha.Recaptcha', [
-    'enable' => true,     //available true/false
+    'enable' => true,     // true/false
     'sitekey' => 'your_site_key', //if you don't have, get one: https://www.google.com/recaptcha/intro/index.html
     'secret' => 'your_secret',
-    'type' => 'image',  //available image/audio
-    'theme' => 'light', //available light/dark
-    'lang' => 'vi',      //if not exist, plugin in will use your default locale
+    'type' => 'image',  // image/audio
+    'theme' => 'light', // light/dark
+    'lang' => 'vi',      // default en
 ]);
 ```
 
