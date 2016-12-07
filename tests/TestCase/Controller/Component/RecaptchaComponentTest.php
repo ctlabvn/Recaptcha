@@ -55,5 +55,8 @@ class RecaptchaComponentTest extends TestCase
             ->will($this->returnValue('{"success":true}'));
 
         $this->assertTrue($this->Recaptcha->verify());
+
+        $this->Recaptcha->config('enable', false);
+        $this->assertTrue($this->Recaptcha->verify());
     }
 }
