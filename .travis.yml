@@ -6,12 +6,23 @@ php:
   - 5.6
   - 7.0
 
+env:
+  global:
+  - DEFAULT=1
+
+matrix:
+  fast_finish: true
+
+  include:
+    - php: 7.0
+      env: PHPCS=1 DEFAULT=0
+
 before_script:
-  - sh -c "composer require 'cakephp/cakephp-codesniffer:dev-master'"
-  - phpenv rehash
+  - composer install --prefer-dist --no-interaction
 
 script:
-  - sh -c "vendor/bin/phpcs -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src"
+  - if [[ $DEFAULT = 1 ]]; then vendor/bin/phpunit; fi
+  - if [[ $PHPCS = 1 ]]; then vendor/bin/phpcs -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests; fi
 
 notifications:
   email: false

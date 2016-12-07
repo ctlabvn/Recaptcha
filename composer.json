@@ -41,6 +41,11 @@
             "Recaptcha\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Recaptcha\\Test\\": "tests"
+        }
+    },
     "minimum-stability": "stable",
     "prefer-stable": true
 }
