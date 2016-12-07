@@ -8,7 +8,6 @@
     >
     <php>
         <ini name="memory_limit" value="-1"/>
-        <ini name="apc.enable_cli" value="1"/>
     </php>
 
     <!-- Add any additional test suites you want to run here -->
@@ -16,6 +15,7 @@
         <testsuite name="Recaptcha Test Suite">
             <directory>./tests/TestCase</directory>
         </testsuite>
+        <!-- Add plugin test suites here. -->
     </testsuites>
 
     <!-- Setup a listener for fixtures -->
@@ -29,15 +29,9 @@
         </listener>
     </listeners>
 
-    <!-- Prevent coverage reports from looking in tests and vendors -->
     <filter>
-        <blacklist>
-            <directory suffix=".php">./vendor/</directory>
-            <directory suffix=".ctp">./vendor/</directory>
-
-            <directory suffix=".php">./tests/</directory>
-            <directory suffix=".ctp">./tests/</directory>
-        </blacklist>
+        <whitelist>
+            <directory suffix=".php">./src/</directory>
+        </whitelist>
     </filter>
-
 </phpunit>
