@@ -47,17 +47,32 @@ class RecaptchaComponent extends Component
         if (!$this->_config['enable']) {
             return true;
         }
+
         $controller = $this->_registry->getController();
         if (isset($controller->request->data['g-recaptcha-response'])) {
-            $response = (new Client())->post('https://www.google.com/recaptcha/api/siteverify', [
-                'secret' => $this->_config['secret'],
-                'response' => $controller->request->data['g-recaptcha-response'],
-                'remoteip' => $controller->request->clientIp()
-            ]);
+            $response = json_decode($this->apiCall());
 
-            return json_decode($response->body)->success;
+            if (isset($response->success)) {
+                return $response->success;
+            }
         }
 
         return false;
+    }
+
+    /**
+     * Call reCAPTCHA API to verify
+     *
+     * @return \Cake\Http\Client\Response
+     */
+    protected function apiCall()
+    {
+        $controller = $this->_registry->getController();
+
+        return (new Client())->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => $this->_config['secret'],
+            'response' => $controller->request->data['g-recaptcha-response'],
+            'remoteip' => $controller->request->clientIp()
+        ]);
     }
 }
