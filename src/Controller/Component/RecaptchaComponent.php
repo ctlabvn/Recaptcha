@@ -64,6 +64,7 @@ class RecaptchaComponent extends Component
      * Call reCAPTCHA API to verify
      *
      * @return string
+     * @codeCoverageIgnore
      */
     protected function apiCall()
     {
