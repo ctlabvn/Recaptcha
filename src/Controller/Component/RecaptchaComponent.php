@@ -63,7 +63,8 @@ class RecaptchaComponent extends Component
     /**
      * Call reCAPTCHA API to verify
      *
-     * @return \Cake\Http\Client\Response
+     * @return string
+     * @codeCoverageIgnore
      */
     protected function apiCall()
     {
@@ -73,6 +74,6 @@ class RecaptchaComponent extends Component
             'secret' => $this->_config['secret'],
             'response' => $controller->request->data['g-recaptcha-response'],
             'remoteip' => $controller->request->clientIp()
-        ]);
+        ])->getBody();
     }
 }
