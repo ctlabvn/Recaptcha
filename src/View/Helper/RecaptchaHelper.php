@@ -21,13 +21,20 @@ class RecaptchaHelper extends Helper
 
     /**
      * Display recaptcha function
+     * @param bool $compactSize Show compact size recaptcha if true. Defaults to false.
      * @return string
      */
-    public function display()
+    public function display($compactSize = false)
     {
         $recaptcha = $this->config();
         if (!$recaptcha['enable']) {
             return '';
+        }
+
+        if ($compactSize == true) {
+            $recaptchaSize = 'compact';
+        } else {
+            $recaptchaSize = 'normal'; // set recaptcha size as normal (default value)
         }
 
         return $this->_View->element('Recaptcha.recaptcha', compact('recaptcha'));
