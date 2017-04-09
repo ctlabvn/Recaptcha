@@ -50,6 +50,7 @@ $this->loadComponent('Recaptcha.Recaptcha', [
     'type' => 'image',  // image/audio
     'theme' => 'light', // light/dark
     'lang' => 'vi',      // default en
+    'size' => 'normal'  // normal/compact
 ]);
 ```
 
