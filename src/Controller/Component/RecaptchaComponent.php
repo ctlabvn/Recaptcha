@@ -24,7 +24,8 @@ class RecaptchaComponent extends Component
         'theme' => 'light',
         'type' => 'image',
         'enable' => true,
-        'lang' => 'en'
+        'lang' => 'en',
+        'size' => 'normal',
     ];
 
     /**
