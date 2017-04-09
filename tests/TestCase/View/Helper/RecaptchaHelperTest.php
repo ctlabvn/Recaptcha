@@ -24,6 +24,7 @@ class RecaptchaHelperTest extends TestCase
                 'theme' => 'theme',
                 'type' => 'type',
                 'lang' => 'lang',
+                'size' => 'size',
             ]
         );
     }
