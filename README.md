@@ -64,15 +64,6 @@ Display recaptcha in your view:
     <?= $this->Form->end()?>
 ```
 
-Display the compact recaptcha in your view:
-```
-    <?= $this->Form->create()?>
-    <?= $this->Form->input('email')?>
-    <?= $this->Recaptcha->display(true)?>  // Display the compact size recaptcha box in your view, if display first parameter = true. Else, defaults to normal size
-    <?= $this->Form->submit()?>
-    <?= $this->Form->end()?>
-```
-
 Verify in your controller function
 ```
     public function forgotPassword() {

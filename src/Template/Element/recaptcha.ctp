@@ -4,7 +4,6 @@
     data-sitekey="<?= $recaptcha['sitekey'] ?>"
     data-theme="<?= $recaptcha['theme'] ?>"
     data-type="<?= $recaptcha['type'] ?>"
-    data-size="<?= $recaptchaSize ?>"
     async defer>
 </div>
 <noscript>
