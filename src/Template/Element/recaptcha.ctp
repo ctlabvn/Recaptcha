@@ -1,4 +1,12 @@
-<?= $this->Html->script('https://www.google.com/recaptcha/api.js?hl=' . $recaptcha['lang']) ?>
+<?= $this->Html->script('https://www.google.com/recaptcha/api.js?hl=' . $recaptcha['lang']. '&onload=CaptchaCallback&render=explicit') ?>
+<script type="text/javascript">
+var CaptchaCallback = function() {
+    $('.g-recaptcha').each(function(index, el) {
+        grecaptcha.render(el, {'sitekey' : '<?= $recaptcha['sitekey'] ?>'});
+    });
+};
+</script>
+
 <div
     class="g-recaptcha"
     data-sitekey="<?= $recaptcha['sitekey'] ?>"
