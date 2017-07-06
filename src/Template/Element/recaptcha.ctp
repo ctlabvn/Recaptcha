@@ -1,4 +1,8 @@
 <?= $this->Html->script('https://www.google.com/recaptcha/api.js?hl=' . $recaptcha['lang']. '&onload=CaptchaCallback&render=explicit') ?>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
 <script type="text/javascript">
 var CaptchaCallback = function() {
     $('.g-recaptcha').each(function(index, el) {
