@@ -26,6 +26,7 @@ class RecaptchaComponent extends Component
         'enable' => true,
         'lang' => 'en',
         'size' => 'normal',
+        'httpClientOptions' => [],
     ];
 
     /**
@@ -70,8 +71,9 @@ class RecaptchaComponent extends Component
     protected function apiCall()
     {
         $controller = $this->_registry->getController();
+        $client = new Client($this->_config['httpClientOptions']);
 
-        return (new Client())->post('https://www.google.com/recaptcha/api/siteverify', [
+        return $client->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => $this->_config['secret'],
             'response' => $controller->request->data['g-recaptcha-response'],
             'remoteip' => $controller->request->clientIp()
