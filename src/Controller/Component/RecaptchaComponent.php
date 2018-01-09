@@ -26,6 +26,7 @@ class RecaptchaComponent extends Component
         'enable' => true,
         'lang' => 'en',
         'size' => 'normal',
+        'callback' => '',//onSubmit
         'httpClientOptions' => [],
     ];
 
