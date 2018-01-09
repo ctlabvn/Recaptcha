@@ -46,7 +46,7 @@ $this->loadComponent('Recaptcha.Recaptcha', [
     'type' => 'image',  // image/audio
     'theme' => 'light', // light/dark
     'lang' => 'vi',      // default en
-    'size' => 'normal'  // normal/compact
+    'size' => 'normal'  // normal|compact|invisible
 ]);
 ```
 
@@ -72,5 +72,33 @@ Verify in your controller function
         }
     }
 ```
+
+## Invisible reCAPTCHA Configure
+
+```
+$this->loadComponent('Recaptcha.Recaptcha', [
+    'enable' => true,     // true/false
+    'sitekey' => 'your_site_key', //if you don't have, get one: https://www.google.com/recaptcha/intro/index.html
+    'secret' => 'your_secret',
+    'type' => 'image',  // image/audio
+    'theme' => 'light', // light/dark
+    'lang' => 'vi',      // default en
+    'size' => 'invisible'  // normal|compact|invisible
+    'callback' => 'onSubmit'
+]);
+```
+your custom.js
+```
+function onSubmit(token) {
+    $("form#demo-form").submit();
+}
+
+$("button#demo-submit").click(function () {
+    event.preventDefault();
+    grecaptcha.execute();
+});
+
+```
+
 
 Done
