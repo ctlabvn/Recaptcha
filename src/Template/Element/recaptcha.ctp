@@ -14,7 +14,7 @@ var CaptchaCallback = function() {
     data-type="<?= $recaptcha['type'] ?>"
     data-size="<?= $recaptcha['size'] ?>"
     <?php if (isset($recaptcha['callback']) && empty($recaptcha['callback'])): ?>
-    data-callback="<?= $recaptcha['size'] ?>"
+    data-callback="<?= $recaptcha['callback'] ?>"
     <?php endif; ?>
     async defer>
 </div>
