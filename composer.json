@@ -1,7 +1,7 @@
 {
   "name": "crabstudio/recaptcha",
   "type": "cakephp-plugin",
-  "description": "Easily use Google Recaptcha in CakePHP 3.2+ projects",
+  "description": "Easily use Google Recaptcha in CakePHP 3.6+ projects",
   "keywords": [
     "cakephp",
     "bootstrap",
@@ -31,7 +31,7 @@
   },
   "require": {
     "php": ">=5.6",
-    "cakephp/cakephp": "~3.2"
+    "cakephp/cakephp": "~3.6"
   },
   "require-dev": {
     "phpunit/phpunit": "*",
