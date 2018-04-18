@@ -1,7 +1,7 @@
-<?= $this->Html->script('https://www.google.com/recaptcha/api.js?hl=' . $recaptcha['lang']. '&onload=CaptchaCallback&render=explicit') ?>
+<?php echo $this->Html->script('https://www.google.com/recaptcha/api.js?hl=' . $recaptcha['lang']. '&onload=CaptchaCallback&render=explicit'); ?>
 <script type="text/javascript">
 var CaptchaCallback = function() {
-	var el = document.getElementsByClassName('g-recaptcha');
+    var el = document.getElementsByClassName('g-recaptcha');
     for (var i = 0; i < el.length; i++)
         grecaptcha.render(el[i], {'sitekey' : '<?= $recaptcha['sitekey'] ?>'});
 };
@@ -9,17 +9,17 @@ var CaptchaCallback = function() {
 
 <div
     class="g-recaptcha"
-    data-sitekey="<?= $recaptcha['sitekey'] ?>"
-    data-theme="<?= $recaptcha['theme'] ?>"
-    data-type="<?= $recaptcha['type'] ?>"
-    data-size="<?= $recaptcha['size'] ?>"
+    data-sitekey="<?php echo $recaptcha['sitekey']; ?>"
+    data-theme="<?php echo $recaptcha['theme']; ?>"
+    data-type="<?php echo $recaptcha['type']; ?>"
+    data-size="<?php echo $recaptcha['size']; ?>"
     async defer>
 </div>
 <noscript>
   <div>
     <div style="width: 302px; height: 422px; position: relative;">
       <div style="width: 302px; height: 422px; position: absolute;">
-        <iframe src="https://www.google.com/recaptcha/api/fallback?k=<?= $recaptcha['sitekey'] ?>"
+        <iframe src="https://www.google.com/recaptcha/api/fallback?k=<?php echo $recaptcha['sitekey']; ?>"
                 frameborder="0" scrolling="no"
                 style="width: 302px; height:422px; border-style: none;">
         </iframe>
