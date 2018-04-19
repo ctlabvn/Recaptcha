@@ -16,7 +16,7 @@ class RecaptchaHelper extends Helper
      */
     public function initialize(array $config = [])
     {
-        $this->config($config);
+        $this->setConfig($config);
     }
 
     /**
@@ -25,11 +25,10 @@ class RecaptchaHelper extends Helper
      */
     public function display()
     {
-        $recaptcha = $this->config();
+        $recaptcha = $this->getConfig();
         if (!$recaptcha['enable']) {
             return '';
         }
-
         return $this->_View->element('Recaptcha.recaptcha', compact('recaptcha'));
     }
 }
