@@ -55,7 +55,7 @@ $this->loadComponent('Recaptcha.Recaptcha', [
 Display recaptcha in your view:
 ```
     <?= $this->Form->create()?>
-    <?= $this->Form->input('email')?>
+    <?= $this->Form->control('email')?>
     <?= $this->Recaptcha->display()?>  // Display recaptcha box in your view, if configure enable = false, nothing to display here
     <?= $this->Form->submit()?>
     <?= $this->Form->end()?>
