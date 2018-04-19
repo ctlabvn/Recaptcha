@@ -3,7 +3,7 @@ namespace Recaptcha\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\I18n\I18n;
-use Cake\Network\Http\Client;
+use Cake\Http\Client;
 
 /**
  * Recaptcha component
@@ -51,14 +51,12 @@ class RecaptchaComponent extends Component
         }
 
         $controller = $this->_registry->getController();
-        if (isset($controller->request->data['g-recaptcha-response'])) {
+        if (isset($controller->request->getData('g-recaptcha-response'))) {
             $response = json_decode($this->apiCall());
-
             if (isset($response->success)) {
                 return $response->success;
             }
         }
-
         return false;
     }
 
@@ -75,7 +73,7 @@ class RecaptchaComponent extends Component
 
         return $client->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => $this->_config['secret'],
-            'response' => $controller->request->data['g-recaptcha-response'],
+            'response' => $controller->request->getData('g-recaptcha-response'),
             'remoteip' => $controller->request->clientIp()
         ])->getBody();
     }
