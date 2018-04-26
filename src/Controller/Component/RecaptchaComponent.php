@@ -36,7 +36,7 @@ class RecaptchaComponent extends Component
      */
     public function initialize(array $config = [])
     {
-        $this->config($config);
+        $this->setConfig($config);
         $this->_registry->getController()->viewBuilder()->helpers(['Recaptcha.Recaptcha' => $this->_config]);
     }
 
@@ -51,7 +51,7 @@ class RecaptchaComponent extends Component
         }
 
         $controller = $this->_registry->getController();
-        if (isset($controller->request->data['g-recaptcha-response'])) {
+        if ($controller->request->getData('g-recaptcha-response')) {
             $response = json_decode($this->apiCall());
 
             if (isset($response->success)) {

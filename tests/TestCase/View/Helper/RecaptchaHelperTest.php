@@ -35,7 +35,7 @@ class RecaptchaHelperTest extends TestCase
         $this->assertTrue(is_string($result));
         $this->assertContains('class="g-recaptcha"', $result);
 
-        $this->Recaptcha->config('enable', false);
+        $this->Recaptcha->setConfig('enable', false);
         $this->assertEmpty($this->Recaptcha->display());
     }
 }
