@@ -3,7 +3,7 @@ namespace Recaptcha\View\Helper\Test\TestCase\Controller\Component;
 
 use Cake\Controller\ComponentRegistry;
 use Cake\Controller\Controller;
-use Cake\Network\Request;
+use Cake\Http\ServerRequest as Request;
 use Cake\TestSuite\TestCase;
 use Recaptcha\Controller\Component\RecaptchaComponent;
 
@@ -37,7 +37,7 @@ class RecaptchaComponentTest extends TestCase
     {
         $this->assertFalse($this->Recaptcha->verify());
 
-        $this->controller->request->data['g-recaptcha-response'] = 'foo';
+        $this->controller->request = $this->controller->request->withData('g-recaptcha-response', 'foo');
 
         $this->Recaptcha->expects($this->once())
             ->method('apiCall')
@@ -48,7 +48,7 @@ class RecaptchaComponentTest extends TestCase
 
     public function testVerifyTrue()
     {
-        $this->controller->request->data['g-recaptcha-response'] = 'foo';
+        $this->controller->request = $this->controller->request->withData('g-recaptcha-response', 'foo');
 
         $this->Recaptcha->expects($this->once())
             ->method('apiCall')
@@ -56,7 +56,7 @@ class RecaptchaComponentTest extends TestCase
 
         $this->assertTrue($this->Recaptcha->verify());
 
-        $this->Recaptcha->config('enable', false);
+        $this->Recaptcha->setConfig('enable', false);
         $this->assertTrue($this->Recaptcha->verify());
     }
 }

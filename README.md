@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/crabstudio/Recaptcha.svg?branch=master)](https://travis-ci.org/crabstudio/Recaptcha) [![Latest Stable Version](https://poser.pugx.org/crabstudio/recaptcha/v/stable)](https://packagist.org/packages/crabstudio/recaptcha) [![Total Downloads](https://poser.pugx.org/crabstudio/recaptcha/downloads)](https://packagist.org/packages/crabstudio/recaptcha) [![Latest Unstable Version](https://poser.pugx.org/crabstudio/recaptcha/v/unstable)](https://packagist.org/packages/crabstudio/recaptcha) [![License](https://poser.pugx.org/crabstudio/recaptcha/license)](https://packagist.org/packages/crabstudio/recaptcha)
-# Integrate Google Recaptcha v2 to your CakePHP v3.2+ project
+# Integrate Google Recaptcha v2 to your CakePHP project
 
 ## Installation
 
@@ -54,18 +54,18 @@ $this->loadComponent('Recaptcha.Recaptcha', [
 
 Display recaptcha in your view:
 ```
-    <?= $this->Form->create()?>
-    <?= $this->Form->input('email')?>
-    <?= $this->Recaptcha->display()?>  // Display recaptcha box in your view, if configure enable = false, nothing to display here
-    <?= $this->Form->submit()?>
-    <?= $this->Form->end()?>
+    <?= $this->Form->create() ?>
+    <?= $this->Form->control('email') ?>
+    <?= $this->Recaptcha->display() ?>  // Display recaptcha box in your view, if configure enable = false, nothing to display here
+    <?= $this->Form->submit() ?>
+    <?= $this->Form->end() ?>
 ```
 
 Verify in your controller function
 ```
     public function forgotPassword() {
-        if($this->request->is('post')){
-            if($this->Recaptcha->verify()) { // if configure enable = false, always return true
+        if ($this->request->is('post')) {
+            if ($this->Recaptcha->verify()) { // if configure enable = false, always return true
                 //do something here
             }
             $this->Flash->error(__('Please pass Google Recaptcha first'));
