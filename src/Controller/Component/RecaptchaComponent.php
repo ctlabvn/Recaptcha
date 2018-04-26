@@ -3,7 +3,7 @@ namespace Recaptcha\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\I18n\I18n;
-use Cake\Network\Http\Client;
+use Cake\Http\Client;
 
 /**
  * Recaptcha component
@@ -75,7 +75,7 @@ class RecaptchaComponent extends Component
 
         return $client->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => $this->_config['secret'],
-            'response' => $controller->request->data['g-recaptcha-response'],
+            'response' => $controller->request->getData('g-recaptcha-response'),
             'remoteip' => $controller->request->clientIp()
         ])->getBody();
     }
