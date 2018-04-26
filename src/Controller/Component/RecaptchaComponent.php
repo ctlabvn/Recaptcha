@@ -2,7 +2,6 @@
 namespace Recaptcha\Controller\Component;
 
 use Cake\Controller\Component;
-use Cake\I18n\I18n;
 use Cake\Http\Client;
 
 /**
