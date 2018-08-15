@@ -36,7 +36,7 @@ class RecaptchaComponent extends Component
     public function initialize(array $config = [])
     {
         $this->setConfig($config);
-        $this->_registry->getController()->viewBuilder()->helpers(['Recaptcha.Recaptcha' => $this->_config]);
+        $this->_registry->getController()->viewBuilder()->setHelpers(['Recaptcha.Recaptcha' => $this->_config]);
     }
 
     /**
@@ -50,7 +50,7 @@ class RecaptchaComponent extends Component
         }
 
         $controller = $this->_registry->getController();
-        if ($controller->request->getData('g-recaptcha-response')) {
+        if ($controller->getRequest()->getData('g-recaptcha-response')) {
             $response = json_decode($this->apiCall());
 
             if (isset($response->success)) {
@@ -74,8 +74,8 @@ class RecaptchaComponent extends Component
 
         return $client->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => $this->_config['secret'],
-            'response' => $controller->request->getData('g-recaptcha-response'),
-            'remoteip' => $controller->request->clientIp()
+            'response' => $controller->getRequest()->getData('g-recaptcha-response'),
+            'remoteip' => $controller->getRequest()->clientIp()
         ])->getBody();
     }
 }
