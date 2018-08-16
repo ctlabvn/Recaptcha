@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/crabstudio/Recaptcha.svg?branch=master)](https://travis-ci.org/crabstudio/Recaptcha) [![Latest Stable Version](https://poser.pugx.org/crabstudio/recaptcha/v/stable)](https://packagist.org/packages/crabstudio/recaptcha) [![Total Downloads](https://poser.pugx.org/crabstudio/recaptcha/downloads)](https://packagist.org/packages/crabstudio/recaptcha) [![Latest Unstable Version](https://poser.pugx.org/crabstudio/recaptcha/v/unstable)](https://packagist.org/packages/crabstudio/recaptcha) [![License](https://poser.pugx.org/crabstudio/recaptcha/license)](https://packagist.org/packages/crabstudio/recaptcha)
+[![Build Status](https://travis-ci.org/agiletechvn/Recaptcha.svg?branch=master)](https://travis-ci.org/agiletechvn/Recaptcha) [![Latest Stable Version](https://poser.pugx.org/crabstudio/recaptcha/v/stable)](https://packagist.org/packages/crabstudio/recaptcha) [![Total Downloads](https://poser.pugx.org/crabstudio/recaptcha/downloads)](https://packagist.org/packages/crabstudio/recaptcha) [![Latest Unstable Version](https://poser.pugx.org/crabstudio/recaptcha/v/unstable)](https://packagist.org/packages/crabstudio/recaptcha) [![License](https://poser.pugx.org/crabstudio/recaptcha/license)](https://packagist.org/packages/crabstudio/recaptcha)
 # Integrate Google Recaptcha v2 to your CakePHP project
 
 ## Installation
@@ -10,11 +10,12 @@ The recommended way to install composer packages is:
 ```
 composer require crabstudio/recaptcha
 ```
+
 Or add the following lines to your application's **composer.json**:
 
 ```
 "require": {
-    "crabstudio/recaptcha": "^2.0"
+    "crabstudio/recaptcha"
 }
 ```
 followed by the command:
@@ -28,11 +29,6 @@ composer update
 From command line:
 ```
 bin/cake plugin load Recaptcha
-```
-
-Or this line to the end of **Your_project\config\bootstrap.php**
-```
-Plugin::load('Recaptcha');
 ```
 
 ## Load Component and Configure
