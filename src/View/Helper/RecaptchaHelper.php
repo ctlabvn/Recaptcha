@@ -23,13 +23,17 @@ class RecaptchaHelper extends Helper
      * Display recaptcha function
      * @return string
      */
-    public function display()
+    public function display($xtraAttribs = null)
     {
         $recaptcha = $this->getConfig();
         if (!$recaptcha['enable']) {
             return '';
         }
 
+        if (!empty($options)) {
+            $recaptcha = array_merge($recaptcha, $xtraAttribs);
+        }
+        
         return $this->_View->element('Recaptcha.recaptcha', compact('recaptcha'));
     }
 }
