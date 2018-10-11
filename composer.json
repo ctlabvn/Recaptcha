@@ -1,5 +1,5 @@
 {
-  "name": "agiletechvn/recaptcha",
+  "name": "crabstudio/recaptcha",
   "type": "cakephp-plugin",
   "description": "Easily use Google Recaptcha in CakePHP 3.2+ projects",
   "keywords": [
