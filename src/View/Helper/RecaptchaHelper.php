@@ -30,7 +30,7 @@ class RecaptchaHelper extends Helper
             return '';
         }
 
-        if (!empty($options)) {
+        if (!empty($xtraAttribs)) {
             $recaptcha = array_merge($recaptcha, $xtraAttribs);
         }
         
