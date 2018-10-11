@@ -29,6 +29,7 @@ class RecaptchaHelper extends Helper
         if (!$recaptcha['enable']) {
             return '';
         }
+
         return $this->_View->element('Recaptcha.recaptcha', compact('recaptcha'));
     }
 }
