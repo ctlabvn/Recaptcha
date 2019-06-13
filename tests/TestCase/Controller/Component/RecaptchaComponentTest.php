@@ -12,7 +12,7 @@ use Recaptcha\Controller\Component\RecaptchaComponent;
  */
 class RecaptchaComponentTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -37,7 +37,7 @@ class RecaptchaComponentTest extends TestCase
     {
         $this->assertFalse($this->Recaptcha->verify());
 
-        $this->controller->request = $this->controller->request->withData('g-recaptcha-response', 'foo');
+        $this->controller->setRequest($this->controller->getRequest()->withData('g-recaptcha-response', 'foo'));
 
         $this->Recaptcha->expects($this->once())
             ->method('apiCall')
@@ -48,7 +48,7 @@ class RecaptchaComponentTest extends TestCase
 
     public function testVerifyTrue()
     {
-        $this->controller->request = $this->controller->request->withData('g-recaptcha-response', 'foo');
+        $this->controller->setRequest($this->controller->getRequest()->withData('g-recaptcha-response', 'foo'));
 
         $this->Recaptcha->expects($this->once())
             ->method('apiCall')

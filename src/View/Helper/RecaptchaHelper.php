@@ -14,7 +14,7 @@ class RecaptchaHelper extends Helper
      * @param array $config The settings for this helper.
      * @return void
      */
-    public function initialize(array $config = [])
+    public function initialize(array $config = []): void
     {
         $this->setConfig($config);
     }

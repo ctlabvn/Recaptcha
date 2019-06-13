@@ -1,4 +1,4 @@
-<?= $this->Html->script('https://www.google.com/recaptcha/api.js?hl=' . $recaptcha['lang']. '&onload=CaptchaCallback&render=explicit') ?>
+<?= $this->Html->script('https://www.google.com/recaptcha/api.js?hl=' . $recaptcha['lang'] . '&onload=CaptchaCallback&render=explicit') ?>
 <script type="text/javascript">
 var CaptchaCallback = function() {
 	var el = document.getElementsByClassName('g-recaptcha');
