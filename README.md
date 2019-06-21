@@ -11,13 +11,6 @@ The recommended way to install composer packages is:
 composer require crabstudio/recaptcha
 ```
 
-Or add the following lines to your application's **composer.json**:
-
-```
-"require": {
-    "crabstudio/recaptcha"
-}
-```
 followed by the command:
 
 ```
@@ -52,16 +45,17 @@ Display recaptcha in your view:
 ```
     <?= $this->Form->create() ?>
     <?= $this->Form->control('email') ?>
-    <?= $this->Recaptcha->display() ?>  // Display recaptcha box in your view, if configure enable = false, nothing to display here
-    <?= $this->Form->submit() ?>
+    <?= $this->Recaptcha->display() ?>  // Display recaptcha box in your view, if configure has enable = false, nothing will be displayed
+    <?= $this->Form->button() ?>
     <?= $this->Form->end() ?>
 ```
 
 Verify in your controller function
 ```
-    public function forgotPassword() {
+    public function forgotPassword() 
+    {
         if ($this->request->is('post')) {
-            if ($this->Recaptcha->verify()) { // if configure enable = false, always return true
+            if ($this->Recaptcha->verify()) { // if configure enable = false, it will always return true
                 //do something here
             }
             $this->Flash->error(__('Please pass Google Recaptcha first'));
