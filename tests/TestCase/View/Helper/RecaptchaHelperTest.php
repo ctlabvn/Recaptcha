@@ -11,9 +11,11 @@ use Recaptcha\View\Helper\RecaptchaHelper;
 class RecaptchaHelperTest extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
+
+        $this->loadPlugins(['Recaptcha']);
 
         $this->View = new View();
         $this->Recaptcha = new RecaptchaHelper(
@@ -33,7 +35,7 @@ class RecaptchaHelperTest extends TestCase
     {
         $result = $this->Recaptcha->display();
         $this->assertTrue(is_string($result));
-        $this->assertContains('class="g-recaptcha"', $result);
+        $this->assertStringContainsString('class="g-recaptcha"', $result);
 
         $this->Recaptcha->setConfig('enable', false);
         $this->assertEmpty($this->Recaptcha->display());

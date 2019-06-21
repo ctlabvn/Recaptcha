@@ -1,6 +1,4 @@
 <?php
-use Cake\Core\Plugin;
-
 /*
  * Test suite bootstrap
  *
@@ -22,5 +20,3 @@ $root = $findRoot(__FILE__);
 unset($findRoot);
 chdir($root);
 require $root . '/vendor/cakephp/cakephp/tests/bootstrap.php';
-
-Plugin::load('Recaptcha', ['path' => dirname(dirname(__FILE__)) . DS]);
