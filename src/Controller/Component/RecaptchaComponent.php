@@ -37,7 +37,7 @@ class RecaptchaComponent extends Component
     public function initialize(array $config = [])
     {
         if (empty($config)) {
-          $config = Configure::read('Recaptcha', []);
+            $config = Configure::read('Recaptcha', []);
         }
 
         $this->setConfig($config);
