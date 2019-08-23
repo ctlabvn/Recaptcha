@@ -39,6 +39,60 @@ $this->loadComponent('Recaptcha.Recaptcha', [
 ]);
 ```
 
+Override default configure from app config file:
+```
+file: config/app.php
+
+    /**
+     * Recaptcha configuration.
+     *
+     */
+    'Recaptcha' => [
+        'enable' => true,
+        'sitekey' => 'your_site_key',
+        'secret' => 'your_secret',
+        'type' => 'image',
+        'theme' => 'light',
+        'lang' => 'es',
+        'size' => 'normal'
+    ]
+```
+
+Override default configure from recaptcha config file:
+```
+file: config/recaptcha.php
+
+<?php
+
+return [
+    /**
+     * Recaptcha configuration.
+     *
+     */
+    'Recaptcha' => [
+        'enable' => true,
+        'sitekey' => 'your_site_key',
+        'secret' => 'your_secret',
+        'type' => 'image',
+        'theme' => 'light',
+        'lang' => 'es',
+        'size' => 'normal'
+    ]
+];
+```
+
+Load recaptcha config file:
+```
+file: config/bootstrap.php
+
+    Configure::load('recaptcha', 'default', true);
+```
+
+Config preference:
+1. loadComponent config options
+2. recaptcha config file
+3. app config file
+
 ## Usage
 
 Display recaptcha in your view:
@@ -52,7 +106,7 @@ Display recaptcha in your view:
 
 Verify in your controller function
 ```
-    public function forgotPassword() 
+    public function forgotPassword()
     {
         if ($this->request->is('post')) {
             if ($this->Recaptcha->verify()) { // if configure enable = false, it will always return true
