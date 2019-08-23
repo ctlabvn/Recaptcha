@@ -40,7 +40,8 @@ $this->loadComponent('Recaptcha.Recaptcha', [
 ```
 
 Override default configure from app config file:
-```file:config/app.php
+```
+file: config/app.php
 
     'Recaptcha' => [
         'enable' => true,
@@ -54,7 +55,9 @@ Override default configure from app config file:
 ```
 
 Override default configure from recaptcha config file:
-```file:config/recaptcha.php
+```
+file: config/recaptcha.php
+
 <?php
 
 return [
@@ -75,7 +78,8 @@ return [
 ```
 
 Load recaptcha config file:
-```file:config/bootstrap.php
+```
+file: config/bootstrap.php
 
     Configure::load('recaptcha', 'default', true);
 ```
