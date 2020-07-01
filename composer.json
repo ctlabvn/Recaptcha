@@ -10,13 +10,13 @@
     "captcha",
     "crabstudio",
     "anhtuank7c",
-    "agiletechvn"
+    "ctlabvn"
   ],
   "suggest": {
     "crabstudio/email-queue": "Allows you to simple send bulk email",
     "crabstudio/authenticate": "Prevent Brute Force Attack"
   },
-  "homepage": "https://github.com/crabstudio/recaptcha",
+  "homepage": "https://github.com/ctlabvn/recaptcha",
   "license": "MIT",
   "authors": [
     {
@@ -25,17 +25,17 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/crabstudio/recaptcha/issues",
-    "source": "https://github.com/crabstudio/recaptcha",
+    "issues": "https://github.com/ctlabvn/recaptcha/issues",
+    "source": "https://github.com/ctlabvn/recaptcha",
     "wiki": "https://github.com/google/recaptcha"
   },
   "require": {
     "php": ">=5.6",
-    "cakephp/cakephp": "^3.5"
+    "cakephp/cakephp": "^4.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.7.14|^6.0",
-    "cakephp/cakephp-codesniffer": "^3.0"
+    "cakephp/cakephp-codesniffer": "^4.0"
   },
   "autoload": {
     "psr-4": {
