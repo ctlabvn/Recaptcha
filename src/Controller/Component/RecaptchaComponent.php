@@ -80,7 +80,7 @@ class RecaptchaComponent extends Component
         return $client->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => $this->_config['secret'],
             'response' => $controller->request->getData('g-recaptcha-response'),
-            'remoteip' => $controller->request->clientIp()
+            'remoteip' => $controller->request->clientIp(),
         ])->getBody();
     }
 }

@@ -28,7 +28,7 @@ class RecaptchaComponentTest extends TestCase
                     'theme' => 'theme',
                     'type' => 'type',
                     'lang' => 'lang',
-                ]
+                ],
             ])
             ->getMock();
     }
