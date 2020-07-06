@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Recaptcha\View\Helper;
 
 use Cake\View\Helper;
@@ -21,6 +23,7 @@ class RecaptchaHelper extends Helper
 
     /**
      * Display recaptcha function
+     *
      * @return string
      */
     public function display()

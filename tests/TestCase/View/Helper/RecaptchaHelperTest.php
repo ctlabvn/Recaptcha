@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Recaptcha\View\Helper\Test\TestCase\View\Helper;
 
 use Cake\TestSuite\TestCase;
@@ -10,7 +12,6 @@ use Recaptcha\View\Helper\RecaptchaHelper;
  */
 class RecaptchaHelperTest extends TestCase
 {
-
     public function setUp(): void
     {
         parent::setUp();

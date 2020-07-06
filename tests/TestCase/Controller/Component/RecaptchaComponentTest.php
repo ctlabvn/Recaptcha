@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Recaptcha\View\Helper\Test\TestCase\Controller\Component;
 
 use Cake\Controller\ComponentRegistry;

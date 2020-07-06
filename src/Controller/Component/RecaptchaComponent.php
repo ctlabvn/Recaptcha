@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Recaptcha\Controller\Component;
 
 use Cake\Controller\Component;
@@ -31,6 +33,7 @@ class RecaptchaComponent extends Component
 
     /**
      * initialize
+     *
      * @param array $config config
      * @return void
      */
@@ -46,6 +49,7 @@ class RecaptchaComponent extends Component
 
     /**
      * verify recaptcha
+     *
      * @return bool
      */
     public function verify()
