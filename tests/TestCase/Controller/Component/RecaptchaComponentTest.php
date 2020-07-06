@@ -43,7 +43,7 @@ class RecaptchaComponentTest extends TestCase
 
         $this->Recaptcha->expects($this->once())
             ->method('apiCall')
-            ->will($this->returnValue(null));
+            ->will($this->returnValue(''));
 
         $this->assertFalse($this->Recaptcha->verify());
     }
