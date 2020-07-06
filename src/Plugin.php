@@ -7,6 +7,8 @@ use Cake\Core\BasePlugin;
 
 /**
  * Recaptcha plugin class
+ *
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class Plugin extends BasePlugin
 {
