@@ -2,6 +2,7 @@
 namespace Recaptcha\Controller\Component;
 
 use Cake\Controller\Component;
+use Cake\Core\Configure;
 use Cake\Http\Client;
 
 /**
@@ -35,6 +36,10 @@ class RecaptchaComponent extends Component
      */
     public function initialize(array $config = []): void
     {
+        if (empty($config)) {
+            $config = Configure::read('Recaptcha', []);
+        }
+
         $this->setConfig($config);
         $this->_registry->getController()->viewBuilder()->setHelpers(['Recaptcha.Recaptcha' => $this->_config]);
     }
@@ -75,7 +80,7 @@ class RecaptchaComponent extends Component
         return $client->post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => $this->_config['secret'],
             'response' => $controller->getRequest()->getData('g-recaptcha-response'),
-            'remoteip' => $controller->getRequest()->clientIp()
+            'remoteip' => $controller->getRequest()->clientIp(),
         ])->getBody();
     }
 }

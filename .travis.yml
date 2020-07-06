@@ -2,7 +2,7 @@ language: php
 
 php:
   - 7.2
-  - 7.3
+  - 7.4
 
 env:
   global:
@@ -23,13 +23,13 @@ before_script:
   - if [[ $PREFER_LOWEST == 1 ]]; then composer update --no-interaction --prefer-lowest --prefer-stable; fi
 
 script:
-  - if [[ $DEFAULT = 1 && $TRAVIS_PHP_VERSION = 7.2 ]]; then export CODECOVERAGE=1; vendor/bin/phpunit --coverage-clover=clover.xml; fi
-  - if [[ $DEFAULT = 1 && $TRAVIS_PHP_VERSION != 7.2 ]]; then vendor/bin/phpunit; fi
+  - if [[ $DEFAULT == 1 && $TRAVIS_PHP_VERSION == 7.4 ]]; then vendor/bin/phpunit --coverage-clover=clover.xml; fi
+  - if [[ $DEFAULT == 1 && $TRAVIS_PHP_VERSION != 7.4 ]]; then vendor/bin/phpunit; fi
 
-  - if [[ $PHPCS = 1 ]]; then vendor/bin/phpcs -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests; fi
+  - if [[ $PHPCS == 1 ]]; then vendor/bin/phpcs -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests; fi
 
 after_success:
-  - if [[ $DEFAULT = 1 && $TRAVIS_PHP_VERSION = 7.2 ]]; then bash <(curl -s https://codecov.io/bash); fi
+  - if [[ $DEFAULT == 1 && $TRAVIS_PHP_VERSION == 7.4 ]]; then bash <(curl -s https://codecov.io/bash); fi
 
 notifications:
   email: false

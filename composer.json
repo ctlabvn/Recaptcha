@@ -10,13 +10,13 @@
     "captcha",
     "crabstudio",
     "anhtuank7c",
-    "agiletechvn"
+    "ctlabvn"
   ],
   "suggest": {
     "crabstudio/email-queue": "Allows you to simple send bulk email",
     "crabstudio/authenticate": "Prevent Brute Force Attack"
   },
-  "homepage": "https://github.com/crabstudio/recaptcha",
+  "homepage": "https://github.com/ctlabvn/recaptcha",
   "license": "MIT",
   "authors": [
     {
@@ -25,8 +25,8 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/crabstudio/recaptcha/issues",
-    "source": "https://github.com/crabstudio/recaptcha",
+    "issues": "https://github.com/ctlabvn/recaptcha/issues",
+    "source": "https://github.com/ctlabvn/recaptcha",
     "wiki": "https://github.com/google/recaptcha"
   },
   "require": {
