@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Recaptcha\Controller\Component;
 
 use Cake\Controller\Component;
@@ -31,10 +33,11 @@ class RecaptchaComponent extends Component
 
     /**
      * initialize
+     *
      * @param array $config config
      * @return void
      */
-    public function initialize(array $config = [])
+    public function initialize(array $config = []): void
     {
         if (empty($config)) {
             $config = Configure::read('Recaptcha', []);
@@ -46,20 +49,21 @@ class RecaptchaComponent extends Component
 
     /**
      * verify recaptcha
+     *
      * @return bool
      */
-    public function verify()
+    public function verify(): bool
     {
         if (!$this->_config['enable']) {
             return true;
         }
 
         $controller = $this->_registry->getController();
-        if ($controller->request->getData('g-recaptcha-response')) {
+        if ($controller->getRequest()->getData('g-recaptcha-response')) {
             $response = json_decode($this->apiCall());
 
             if (isset($response->success)) {
-                return $response->success;
+                return (bool)$response->success;
             }
         }
 
@@ -72,15 +76,16 @@ class RecaptchaComponent extends Component
      * @return string
      * @codeCoverageIgnore
      */
-    protected function apiCall()
+    protected function apiCall(): string
     {
         $controller = $this->_registry->getController();
         $client = new Client($this->_config['httpClientOptions']);
-
-        return $client->post('https://www.google.com/recaptcha/api/siteverify', [
+        $data = [
             'secret' => $this->_config['secret'],
-            'response' => $controller->request->getData('g-recaptcha-response'),
-            'remoteip' => $controller->request->clientIp(),
-        ])->getBody();
+            'response' => $controller->getRequest()->getData('g-recaptcha-response'),
+            'remoteip' => $controller->getRequest()->clientIp(),
+        ];
+
+        return (string)$client->post('https://www.google.com/recaptcha/api/siteverify', $data)->getBody();
     }
 }

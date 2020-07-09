@@ -1,52 +1,50 @@
 {
-  "name": "crabstudio/recaptcha",
-  "type": "cakephp-plugin",
-  "description": "Easily use Google Recaptcha in CakePHP 3.2+ projects",
-  "keywords": [
-    "cakephp",
-    "bootstrap",
-    "google",
-    "recaptcha",
-    "captcha",
-    "crabstudio",
-    "anhtuank7c",
-    "ctlabvn"
-  ],
-  "suggest": {
-    "crabstudio/email-queue": "Allows you to simple send bulk email",
-    "crabstudio/authenticate": "Prevent Brute Force Attack"
-  },
-  "homepage": "https://github.com/ctlabvn/recaptcha",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "anhtuank7c",
-      "email": "anhtuank7c@hotmail.com"
+    "name": "crabstudio/recaptcha",
+    "type": "cakephp-plugin",
+    "description": "Easily use Google Recaptcha in CakePHP projects",
+    "keywords": [
+        "cakephp",
+        "bootstrap",
+        "google",
+        "recaptcha",
+        "captcha",
+        "crabstudio",
+        "anhtuank7c",
+        "ctlabvn"
+    ],
+    "suggest": {
+        "crabstudio/email-queue": "Allows you to simple send bulk email",
+        "crabstudio/authenticate": "Prevent Brute Force Attack"
+    },
+    "homepage": "https://github.com/ctlabvn/recaptcha",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "anhtuank7c",
+            "email": "anhtuank7c@hotmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/ctlabvn/recaptcha/issues",
+        "source": "https://github.com/ctlabvn/recaptcha",
+        "wiki": "https://github.com/google/recaptcha"
+    },
+    "require": {
+        "php": ">=7.2.0",
+        "cakephp/cakephp": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~8.5.0",
+        "cakephp/cakephp-codesniffer": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Recaptcha\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Recaptcha\\Test\\": "tests"
+        }
     }
-  ],
-  "support": {
-    "issues": "https://github.com/ctlabvn/recaptcha/issues",
-    "source": "https://github.com/ctlabvn/recaptcha",
-    "wiki": "https://github.com/google/recaptcha"
-  },
-  "require": {
-    "php": ">=5.6",
-    "cakephp/cakephp": "^3.5"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^5.7.14|^6.0",
-    "cakephp/cakephp-codesniffer": "^3.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "Recaptcha\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Recaptcha\\Test\\": "tests"
-    }
-  },
-  "minimum-stability": "stable",
-  "prefer-stable": true
 }

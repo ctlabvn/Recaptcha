@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Recaptcha\View\Helper;
 
 use Cake\View\Helper;
@@ -14,13 +16,14 @@ class RecaptchaHelper extends Helper
      * @param array $config The settings for this helper.
      * @return void
      */
-    public function initialize(array $config = [])
+    public function initialize(array $config = []): void
     {
         $this->setConfig($config);
     }
 
     /**
      * Display recaptcha function
+     *
      * @return string
      */
     public function display()
