@@ -44,7 +44,7 @@ class RecaptchaComponent extends Component
         }
 
         $this->setConfig($config);
-        $this->_registry->getController()->viewBuilder()->setHelpers(['Recaptcha.Recaptcha' => $this->_config]);
+        $this->_registry->getController()->viewBuilder()->addHelpers(['Recaptcha.Recaptcha' => $this->_config]);
     }
 
     /**
