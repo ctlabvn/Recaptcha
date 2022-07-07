@@ -17,7 +17,7 @@ class RecaptchaComponent extends Component
      *
      * These are merged with user-provided config when the component is used.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $_defaultConfig = [
         // This is test only key/secret
@@ -44,7 +44,12 @@ class RecaptchaComponent extends Component
         }
 
         $this->setConfig($config);
-        $this->_registry->getController()->viewBuilder()->setHelpers(['Recaptcha.Recaptcha' => $this->_config]);
+
+        $method = 'setHelpers';
+        if (method_exists($this->getController()->viewBuilder(), 'addHelpers')) {
+            $method = 'addHelpers';
+        }
+        $this->getController()->viewBuilder()->{$method}(['Recaptcha.Recaptcha' => $this->_config]);
     }
 
     /**
