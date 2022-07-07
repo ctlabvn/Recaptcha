@@ -1,4 +1,7 @@
-[![Build Status](https://travis-ci.org/ctlabvn/Recaptcha.svg?branch=master)](https://travis-ci.org/ctlabvn/Recaptcha) [![Latest Stable Version](https://poser.pugx.org/crabstudio/recaptcha/v/stable)](https://packagist.org/packages/crabstudio/recaptcha) [![Total Downloads](https://poser.pugx.org/crabstudio/recaptcha/downloads)](https://packagist.org/packages/crabstudio/recaptcha) [![License](https://poser.pugx.org/crabstudio/recaptcha/license)](https://packagist.org/packages/crabstudio/recaptcha)
+[![Build Status](https://img.shields.io/github/workflow/status/ctlabvn/Recaptcha/CI/master)](https://github.com/ctlabvn/Recaptcha/actions?query=workflow%3ACI+branch%3Amaster)
+[![Latest Stable Version](https://poser.pugx.org/crabstudio/recaptcha/v/stable)](https://packagist.org/packages/crabstudio/recaptcha)
+[![Total Downloads](https://poser.pugx.org/crabstudio/recaptcha/downloads)](https://packagist.org/packages/crabstudio/recaptcha)
+[![License](https://poser.pugx.org/crabstudio/recaptcha/license)](https://packagist.org/packages/crabstudio/recaptcha)
 # Integrate Google Recaptcha v2 to your CakePHP project
 
 ## Installation
