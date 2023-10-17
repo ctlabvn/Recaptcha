@@ -6,7 +6,6 @@
          bootstrap="./tests/bootstrap.php"
          cacheDirectory=".phpunit.cache"
     >
-    <coverage/>
     <php>
         <ini name="memory_limit" value="-1"/>
     </php>
