@@ -10,7 +10,7 @@ use Cake\Core\BasePlugin;
  *
  * @psalm-suppress PropertyNotSetInConstructor
  */
-class Plugin extends BasePlugin
+class RecaptchaPlugin extends BasePlugin
 {
     /**
      * Do bootstrapping or not
