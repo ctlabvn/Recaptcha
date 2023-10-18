@@ -9,9 +9,9 @@ jobs:
       fail-fast: false
       matrix:
         prefer-lowest: ['']
-        php-version: ['7.4', '8.0', '8.1']
+        php-version: ['8.1', '8.2']
         include:
-          - php-version: '7.2'
+          - php-version: '8.1'
             prefer-lowest: 'prefer-lowest'
 
     steps:
@@ -54,10 +54,10 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '7.4'
+        php-version: '8.1'
         extensions: mbstring, intl
         coverage: none
-        tools: vimeo/psalm:4
+        tools: vimeo/psalm:5
 
     - name: Composer Install
       run: composer install

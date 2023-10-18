@@ -21,7 +21,7 @@ class RecaptchaComponentTest extends TestCase
         $this->controller = new Controller(new Request());
 
         $this->Recaptcha = $this->getMockBuilder(RecaptchaComponent::class)
-            ->setMethods(['apiCall'])
+            ->onlyMethods(['apiCall'])
             ->setConstructorArgs([
                 new ComponentRegistry($this->controller),
                 [
