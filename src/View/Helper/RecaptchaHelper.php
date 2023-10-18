@@ -11,17 +11,6 @@ use Cake\View\Helper;
 class RecaptchaHelper extends Helper
 {
     /**
-     * Constructor.
-     *
-     * @param array $config The settings for this helper.
-     * @return void
-     */
-    public function initialize(array $config = []): void
-    {
-        $this->setConfig($config);
-    }
-
-    /**
      * Display recaptcha function
      *
      * @return string

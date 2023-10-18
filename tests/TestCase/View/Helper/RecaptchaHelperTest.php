@@ -32,7 +32,7 @@ class RecaptchaHelperTest extends TestCase
         );
     }
 
-    public function testDisplay()
+    public function testDisplay(): void
     {
         $result = $this->Recaptcha->display();
         $this->assertTrue(is_string($result));

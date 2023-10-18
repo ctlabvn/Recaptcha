@@ -35,7 +35,7 @@ class RecaptchaComponentTest extends TestCase
             ->getMock();
     }
 
-    public function testVerifyFalse()
+    public function testVerifyFalse(): void
     {
         $this->assertFalse($this->Recaptcha->verify());
 
@@ -48,7 +48,7 @@ class RecaptchaComponentTest extends TestCase
         $this->assertFalse($this->Recaptcha->verify());
     }
 
-    public function testVerifyTrue()
+    public function testVerifyTrue(): void
     {
         $this->controller->setRequest($this->controller->getRequest()->withData('g-recaptcha-response', 'foo'));
 
