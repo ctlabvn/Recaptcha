@@ -19,7 +19,7 @@ class RecaptchaComponent extends Component
      *
      * @var array<string, mixed>
      */
-    protected $_defaultConfig = [
+    protected array $_defaultConfig = [
         // This is test only key/secret
         'sitekey' => '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
         'secret' => '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
@@ -40,16 +40,10 @@ class RecaptchaComponent extends Component
     public function initialize(array $config = []): void
     {
         if (empty($config)) {
-            $config = Configure::read('Recaptcha', []);
+            $this->setConfig(Configure::read('Recaptcha', []));
         }
 
-        $this->setConfig($config);
-
-        $method = 'setHelpers';
-        if (method_exists($this->getController()->viewBuilder(), 'addHelpers')) {
-            $method = 'addHelpers';
-        }
-        $this->getController()->viewBuilder()->{$method}(['Recaptcha.Recaptcha' => $this->_config]);
+        $this->getController()->viewBuilder()->addHelpers(['Recaptcha.Recaptcha' => $this->_config]);
     }
 
     /**
