@@ -12,7 +12,7 @@ jobs:
 
   cs-stan:
     name: Coding Standard & Static Analysis
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
     - uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
         php-version: '8.1'
         extensions: mbstring, intl
         coverage: none
-        tools: vimeo/psalm:5
+        tools: vimeo/psalm:6
 
     - name: Composer Install
       run: composer install

@@ -1,7 +1,7 @@
-[![Build Status](https://img.shields.io/github/actions/workflow/status/ctlabvn/Recaptcha/ci.yml)](https://github.com/ctlabvn/Recaptcha/actions?query=workflow%3ACI+branch%3Amaster)
-[![Latest Stable Version](https://poser.pugx.org/crabstudio/recaptcha/v/stable)](https://packagist.org/packages/crabstudio/recaptcha)
-[![Total Downloads](https://poser.pugx.org/crabstudio/recaptcha/downloads)](https://packagist.org/packages/crabstudio/recaptcha)
-[![License](https://poser.pugx.org/crabstudio/recaptcha/license)](https://packagist.org/packages/crabstudio/recaptcha)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/ctlabvn/Recaptcha/ci.yml?branch=master)](https://github.com/ctlabvn/Recaptcha/actions?query=workflow%3ACI+branch%3Amaster)
+[![Latest Stable Version](https://img.shields.io/packagist/v/crabstudio/recaptcha)](https://packagist.org/packages/crabstudio/recaptcha)
+[![Total Downloads](https://img.shields.io/packagist/dt/crabstudio/recaptcha)](https://packagist.org/packages/crabstudio/recaptcha)
+[![License](https://img.shields.io/github/license/ctlabvn/Recaptcha)](https://github.com/ctlabvn/Recaptcha/blob/master/LICENSE)
 
 # Integrate Google Recaptcha v2 to your CakePHP project
 
@@ -11,27 +11,23 @@ You can install this plugin into your CakePHP application using [composer](http:
 
 The recommended way to install composer packages is:
 
-```
+```bash
 composer require crabstudio/recaptcha
-```
-
-followed by the command:
-
-```
-composer update
 ```
 
 ## Load plugin
 
 From command line:
-```
+
+```bash
 bin/cake plugin load Recaptcha
 ```
 
 ## Load Component and Configure
 
 Override default configure from loadComponent:
-```
+
+```php
 $this->loadComponent('Recaptcha.Recaptcha', [
     'enable' => true,     // true/false
     'sitekey' => 'your_site_key', //if you don't have, get one: https://www.google.com/recaptcha/intro/index.html
@@ -44,8 +40,9 @@ $this->loadComponent('Recaptcha.Recaptcha', [
 ```
 
 Override default configure from app config file:
-```
-file: config/app.php
+
+```php
+// file: config/app.php
 
     /**
      * Recaptcha configuration.
@@ -63,10 +60,9 @@ file: config/app.php
 ```
 
 Override default configure from recaptcha config file:
-```
-file: config/recaptcha.php
 
-<?php
+```php
+// ffile: config/recaptcha.php
 
 return [
     /**
@@ -86,8 +82,9 @@ return [
 ```
 
 Load recaptcha config file:
-```
-file: config/bootstrap.php
+
+```php
+// file: config/bootstrap.php
 
     Configure::load('recaptcha', 'default', true);
 ```
@@ -100,16 +97,19 @@ Config preference:
 ## Usage
 
 Display recaptcha in your view:
-```
+
+```php
     <?= $this->Form->create() ?>
     <?= $this->Form->control('email') ?>
-    <?= $this->Recaptcha->display() ?>  // Display recaptcha box in your view, if configure has enable = false, nothing will be displayed
+    // Display recaptcha box in your view, if configure has enable = false, nothing will be displayed
+    <?= $this->Recaptcha->display() ?>
     <?= $this->Form->button() ?>
     <?= $this->Form->end() ?>
 ```
 
 Verify in your controller function
-```
+
+```php
     public function forgotPassword()
     {
         if ($this->request->is('post')) {
@@ -121,4 +121,4 @@ Verify in your controller function
     }
 ```
 
-Done
+Done.
