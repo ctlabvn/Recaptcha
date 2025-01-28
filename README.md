@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/github/actions/workflow/status/ctlabvn/Recaptcha/ci.yml?branch=master)](https://github.com/ctlabvn/Recaptcha/actions?query=workflow%3ACI+branch%3Amaster)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/ctlabvn/Recaptcha/ci.yml?branch=master)](https://github.com/ctlabvn/Recaptcha/actions/workflows/ci.yml?query=branch%3Amaster)
 [![Latest Stable Version](https://img.shields.io/packagist/v/crabstudio/recaptcha)](https://packagist.org/packages/crabstudio/recaptcha)
 [![Total Downloads](https://img.shields.io/packagist/dt/crabstudio/recaptcha)](https://packagist.org/packages/crabstudio/recaptcha)
 [![License](https://img.shields.io/github/license/ctlabvn/Recaptcha)](https://github.com/ctlabvn/Recaptcha/blob/master/LICENSE)
