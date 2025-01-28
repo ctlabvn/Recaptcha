@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Recaptcha\View\Helper;
 
+use Cake\Core\Configure;
 use Cake\View\Helper;
 
 /**
@@ -11,14 +12,26 @@ use Cake\View\Helper;
 class RecaptchaHelper extends Helper
 {
     /**
+     * initialize
+     *
+     * @param array $config config
+     * @return void
+     */
+    public function initialize(array $config = []): void
+    {
+        $config += Configure::read('Recaptcha', []);
+        $this->setConfig($config, merge: false);
+    }
+
+    /**
      * Display recaptcha function
      *
      * @return string
      */
-    public function display()
+    public function display(): string
     {
         $recaptcha = $this->getConfig();
-        if (!$recaptcha['enable']) {
+        if (empty($recaptcha['enable'])) {
             return '';
         }
 
