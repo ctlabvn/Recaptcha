@@ -12,6 +12,33 @@ use Cake\View\Helper;
 class RecaptchaHelper extends Helper
 {
     /**
+     * Default config
+     *
+     * These are merged with user-provided config when the component is used.
+     *
+     * @var array<string, mixed>
+     */
+    protected array $_defaultConfig = [
+        // This is test only key/secret
+        'sitekey' => '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+        'secret' => '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
+        'theme' => 'light',
+        'type' => 'image',
+        'callback' => null,
+        'enable' => true,
+        'lang' => 'en',
+        'size' => 'normal',
+        'scriptBlock' => true,
+    ];
+
+    /**
+     * Helpers
+     *
+     * @var array
+     */
+    protected array $helpers = ['Form'];
+
+    /**
      * initialize
      *
      * @param array $config config
@@ -26,11 +53,12 @@ class RecaptchaHelper extends Helper
     /**
      * Display recaptcha function
      *
+     * @param array $config Config
      * @return string
      */
-    public function display(): string
+    public function display(array $config = []): string
     {
-        $recaptcha = $this->getConfig();
+        $recaptcha = $config + $this->getConfig();
         if (empty($recaptcha['enable'])) {
             return '';
         }

@@ -1,19 +1,33 @@
-<?= $this->Html->script('https://www.google.com/recaptcha/api.js?hl=' . $recaptcha['lang'] . '&onload=CaptchaCallback&render=explicit') ?>
-<script type="text/javascript">
-var CaptchaCallback = function() {
-	var el = document.getElementsByClassName('g-recaptcha');
-    for (var i = 0; i < el.length; i++)
-        grecaptcha.render(el[i], {'sitekey' : '<?= $recaptcha['sitekey'] ?>'});
-};
-</script>
+<?php
+/**
+ * @var \Cake\View\View $this
+ */
+use Cake\Exception\CakeException;
 
+try {
+    $this->Form->unlockField('g-recaptcha-response');
+} catch (CakeException) {
+    // If FormProtectorComponent is not loaded, an exception in thrown in older CakePHP versions.
+}
+?>
+<?= $this->Html->script(
+    'https://www.google.com/recaptcha/api.js?hl=' . $recaptcha['lang'],
+    [
+        'block' => $recaptcha['scriptBlock'],
+        'async' => true,
+        'defer' => true,
+    ]
+) ?>
 <div
     class="g-recaptcha"
     data-sitekey="<?= $recaptcha['sitekey'] ?>"
     data-theme="<?= $recaptcha['theme'] ?>"
     data-type="<?= $recaptcha['type'] ?>"
     data-size="<?= $recaptcha['size'] ?>"
-    async defer>
+    <?php if ($recaptcha['callback']) : ?>
+        data-callback="<?= $recaptcha['callback'] ?>"
+    <?php endif ?>
+>
 </div>
 <noscript>
   <div>

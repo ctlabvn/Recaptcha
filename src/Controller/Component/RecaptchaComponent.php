@@ -29,10 +29,12 @@ class RecaptchaComponent extends Component
         'secret' => '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
         'theme' => 'light',
         'type' => 'image',
+        'callback' => null,
         'enable' => true,
         'lang' => 'en',
         'size' => 'normal',
         'httpClientOptions' => [],
+        'scriptBlock' => true,
     ];
 
     /**
