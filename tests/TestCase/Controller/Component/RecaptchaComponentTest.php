@@ -5,6 +5,7 @@ namespace Recaptcha\View\Helper\Test\TestCase\Controller\Component;
 
 use Cake\Controller\ComponentRegistry;
 use Cake\Controller\Controller;
+use Cake\Event\Event;
 use Cake\Http\ServerRequest as Request;
 use Cake\TestSuite\TestCase;
 use Recaptcha\Controller\Component\RecaptchaComponent;
@@ -36,6 +37,13 @@ class RecaptchaComponentTest extends TestCase
                 ],
             ])
             ->getMock();
+    }
+
+    public function testBeforeRender(): void
+    {
+        $this->Recaptcha->beforeRender(new Event('Controller.beforeRender'));
+        $helpers = $this->controller->viewBuilder()->getHelpers();
+        $this->assertArrayHasKey('Recaptcha', $helpers);
     }
 
     public function testVerifyFalse(): void
