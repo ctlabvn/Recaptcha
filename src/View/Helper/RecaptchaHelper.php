@@ -59,7 +59,7 @@ class RecaptchaHelper extends Helper
     public function display(array $config = []): string
     {
         $recaptcha = $config + $this->getConfig();
-        if (empty($recaptcha['enable'])) {
+        if (!(bool)$recaptcha['enable']) {
             return '';
         }
 

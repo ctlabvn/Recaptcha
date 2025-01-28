@@ -67,7 +67,7 @@ class RecaptchaComponent extends Component
      */
     public function verify(): bool
     {
-        if (!$this->_config['enable']) {
+        if (!(bool)$this->_config['enable']) {
             return true;
         }
 
