@@ -2,7 +2,7 @@
 /**
  * @var \Cake\View\View $this
  */
-use Cake\Exception\CakeException;
+use Cake\Core\Exception\CakeException;
 
 try {
     $this->Form->unlockField('g-recaptcha-response');
