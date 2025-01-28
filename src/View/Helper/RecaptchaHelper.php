@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Recaptcha\View\Helper;
 
 use Cake\Core\Configure;
+use Cake\I18n\I18n;
 use Cake\View\Helper;
+use Locale;
 
 /**
  * Recaptcha helper
@@ -19,14 +21,13 @@ class RecaptchaHelper extends Helper
      * @var array<string, mixed>
      */
     protected array $_defaultConfig = [
-        // This is test only key/secret
+        // This is test only key
         'sitekey' => '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
-        'secret' => '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
         'theme' => 'light',
         'type' => 'image',
         'callback' => null,
         'enable' => true,
-        'lang' => 'en',
+        'lang' => null,
         'size' => 'normal',
         'scriptBlock' => true,
     ];
@@ -48,6 +49,10 @@ class RecaptchaHelper extends Helper
     {
         $config += Configure::read('Recaptcha', []);
         $this->setConfig($config);
+
+        if (!$this->getConfig('lang')) {
+            $this->setConfig('lang', Locale::getPrimaryLanguage(I18n::getLocale()));
+        }
     }
 
     /**

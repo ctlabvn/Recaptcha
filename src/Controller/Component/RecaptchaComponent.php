@@ -7,7 +7,9 @@ use Cake\Controller\Component;
 use Cake\Core\Configure;
 use Cake\Event\EventInterface;
 use Cake\Http\Client;
+use Cake\I18n\I18n;
 use Exception;
+use Locale;
 
 /**
  * Recaptcha component
@@ -31,7 +33,7 @@ class RecaptchaComponent extends Component
         'type' => 'image',
         'callback' => null,
         'enable' => true,
-        'lang' => 'en',
+        'lang' => null,
         'size' => 'normal',
         'httpClientOptions' => [],
         'scriptBlock' => true,
@@ -47,6 +49,10 @@ class RecaptchaComponent extends Component
     {
         $config += Configure::read('Recaptcha', []);
         $this->setConfig($config);
+
+        if (!$this->getConfig('lang')) {
+            $this->setConfig('lang', Locale::getPrimaryLanguage(I18n::getLocale()));
+        }
     }
 
     /**
@@ -57,7 +63,10 @@ class RecaptchaComponent extends Component
      */
     public function beforeRender(EventInterface $event): void
     {
-        $this->getController()->viewBuilder()->addHelpers(['Recaptcha.Recaptcha' => $this->_config]);
+        $config = $this->getConfig();
+        unset($config['secret'], $config['httpClientOptions']);
+
+        $this->getController()->viewBuilder()->addHelpers(['Recaptcha.Recaptcha' => $config]);
     }
 
     /**
