@@ -34,22 +34,22 @@ $this->loadComponent('Recaptcha.Recaptcha', [
     'secret' => 'your_secret',
     'type' => 'image',  // image/audio
     'theme' => 'light', // light/dark
-    'lang' => 'vi',      // default en
+    'lang' => 'en', // default 'en'
     'size' => 'normal'  // normal/compact
+    'callback' => null, // `callback` data attribute for the recaptcha div, default `null`
+    'scriptBlock' => true // Value for `block` option for HtmlHelper::script() call
 ]);
 ```
 
-Override default configure from app config file:
+Override default config from app config file:
 
 ```php
 // file: config/app.php
 
     /**
      * Recaptcha configuration.
-     *
      */
     'Recaptcha' => [
-        'enable' => true,
         'sitekey' => 'your_site_key',
         'secret' => 'your_secret',
         'type' => 'image',
@@ -62,7 +62,7 @@ Override default configure from app config file:
 Override default configure from recaptcha config file:
 
 ```php
-// ffile: config/recaptcha.php
+// file: config/recaptcha.php
 
 return [
     /**
@@ -96,12 +96,12 @@ Config preference:
 
 ## Usage
 
-Display recaptcha in your view:
+Display recaptcha in your template:
 
 ```php
     <?= $this->Form->create() ?>
     <?= $this->Form->control('email') ?>
-    // Display recaptcha box in your view, if configure has enable = false, nothing will be displayed
+    // Display recaptcha box in your template, if configure has enable = false, nothing will be displayed
     <?= $this->Recaptcha->display() ?>
     <?= $this->Form->button() ?>
     <?= $this->Form->end() ?>

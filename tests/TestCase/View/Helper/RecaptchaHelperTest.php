@@ -25,21 +25,30 @@ class RecaptchaHelperTest extends TestCase
         $this->Recaptcha = new RecaptchaHelper(
             $this->View,
             [
-                'enable' => true,
                 'sitekey' => 'sitekey',
                 'theme' => 'theme',
                 'type' => 'type',
                 'lang' => 'lang',
                 'size' => 'size',
+                'callback' => 'callback',
             ]
         );
     }
 
     public function testDisplay(): void
     {
-        $result = $this->Recaptcha->display();
-        $this->assertTrue(is_string($result));
+        $result = $this->Recaptcha->display(['scriptBlock' => null]);
         $this->assertStringContainsString('class="g-recaptcha"', $result);
+        $this->assertStringContainsString('data-sitekey="sitekey"', $result);
+        $this->assertStringContainsString('data-theme="theme"', $result);
+        $this->assertStringContainsString('data-type="type"', $result);
+        $this->assertStringContainsString('data-size="size"', $result);
+        $this->assertStringContainsString('data-callback="callback"', $result);
+
+        $this->assertStringContainsString('https://www.google.com/recaptcha/api.js?hl=lang', $result);
+
+        $result = $this->Recaptcha->display();
+        $this->assertStringNotContainsString('https://www.google.com/recaptcha/api.js', $result);
 
         $this->Recaptcha->setConfig('enable', false);
         $this->assertEmpty($this->Recaptcha->display());

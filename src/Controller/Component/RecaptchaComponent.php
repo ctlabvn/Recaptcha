@@ -5,13 +5,19 @@ namespace Recaptcha\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\Core\Configure;
+use Cake\Event\EventInterface;
 use Cake\Http\Client;
+use Cake\I18n\I18n;
+use Exception;
+use Locale;
 
 /**
  * Recaptcha component
  */
 class RecaptchaComponent extends Component
 {
+    public const VERIFY_ENDPOINT = 'https://www.google.com/recaptcha/api/siteverify';
+
     /**
      * Default config
      *
@@ -25,10 +31,12 @@ class RecaptchaComponent extends Component
         'secret' => '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe',
         'theme' => 'light',
         'type' => 'image',
+        'callback' => null,
         'enable' => true,
-        'lang' => 'en',
+        'lang' => null,
         'size' => 'normal',
         'httpClientOptions' => [],
+        'scriptBlock' => true,
     ];
 
     /**
@@ -39,11 +47,26 @@ class RecaptchaComponent extends Component
      */
     public function initialize(array $config = []): void
     {
-        if (empty($config)) {
-            $this->setConfig(Configure::read('Recaptcha', []));
-        }
+        $config += Configure::read('Recaptcha', []);
+        $this->setConfig($config);
 
-        $this->getController()->viewBuilder()->addHelpers(['Recaptcha.Recaptcha' => $this->_config]);
+        if (!$this->getConfig('lang')) {
+            $this->setConfig('lang', Locale::getPrimaryLanguage(I18n::getLocale()));
+        }
+    }
+
+    /**
+     * beforeRender
+     *
+     * @param \Cake\Event\EventInterface $event Controller.beforeRender event
+     * @return void
+     */
+    public function beforeRender(EventInterface $event): void
+    {
+        $config = $this->getConfig();
+        unset($config['secret'], $config['httpClientOptions']);
+
+        $this->getController()->viewBuilder()->addHelpers(['Recaptcha.Recaptcha' => $config]);
     }
 
     /**
@@ -53,13 +76,17 @@ class RecaptchaComponent extends Component
      */
     public function verify(): bool
     {
-        if (!$this->_config['enable']) {
+        if (!(bool)$this->_config['enable']) {
             return true;
         }
 
         $controller = $this->_registry->getController();
         if ($controller->getRequest()->getData('g-recaptcha-response')) {
-            $response = json_decode($this->apiCall());
+            try {
+                $response = json_decode($this->apiCall(), flags: JSON_THROW_ON_ERROR);
+            } catch (Exception $e) {
+                return false;
+            }
 
             if (isset($response->success)) {
                 return (bool)$response->success;
@@ -85,6 +112,6 @@ class RecaptchaComponent extends Component
             'remoteip' => $controller->getRequest()->clientIp(),
         ];
 
-        return (string)$client->post('https://www.google.com/recaptcha/api/siteverify', $data)->getBody();
+        return (string)$client->post(static::VERIFY_ENDPOINT, $data)->getBody();
     }
 }

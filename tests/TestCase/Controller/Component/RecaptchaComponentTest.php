@@ -5,6 +5,7 @@ namespace Recaptcha\View\Helper\Test\TestCase\Controller\Component;
 
 use Cake\Controller\ComponentRegistry;
 use Cake\Controller\Controller;
+use Cake\Event\Event;
 use Cake\Http\ServerRequest as Request;
 use Cake\TestSuite\TestCase;
 use Recaptcha\Controller\Component\RecaptchaComponent;
@@ -32,10 +33,29 @@ class RecaptchaComponentTest extends TestCase
                     'sitekey' => 'sitekey',
                     'theme' => 'theme',
                     'type' => 'type',
-                    'lang' => 'lang',
                 ],
             ])
             ->getMock();
+    }
+
+    public function testInitialize()
+    {
+        $this->Recaptcha->initialize();
+        $this->assertEquals('en', $this->Recaptcha->getConfig('lang'));
+
+        $this->Recaptcha->setConfig('lang', 'ja');
+        $this->Recaptcha->initialize();
+        $this->assertEquals('ja', $this->Recaptcha->getConfig('lang'));
+    }
+
+    public function testBeforeRender(): void
+    {
+        $this->Recaptcha->beforeRender(new Event('Controller.beforeRender'));
+        $helpers = $this->controller->viewBuilder()->getHelpers();
+        $this->assertArrayHasKey('Recaptcha', $helpers);
+
+        $this->assertArrayHasKey('sitekey', $helpers['Recaptcha']);
+        $this->assertArrayNotHasKey('secret', $helpers['Recaptcha']);
     }
 
     public function testVerifyFalse(): void
