@@ -12,6 +12,9 @@ use Recaptcha\View\Helper\RecaptchaHelper;
  */
 class RecaptchaHelperTest extends TestCase
 {
+    protected View $View;
+    protected RecaptchaHelper $Recaptcha;
+
     public function setUp(): void
     {
         parent::setUp();

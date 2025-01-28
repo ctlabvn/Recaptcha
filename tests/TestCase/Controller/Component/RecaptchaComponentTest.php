@@ -14,6 +14,9 @@ use Recaptcha\Controller\Component\RecaptchaComponent;
  */
 class RecaptchaComponentTest extends TestCase
 {
+    protected Controller $controller;
+    protected RecaptchaComponent $Recaptcha;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -43,7 +46,7 @@ class RecaptchaComponentTest extends TestCase
 
         $this->Recaptcha->expects($this->once())
             ->method('apiCall')
-            ->will($this->returnValue(''));
+            ->willReturn('');
 
         $this->assertFalse($this->Recaptcha->verify());
     }
@@ -54,7 +57,7 @@ class RecaptchaComponentTest extends TestCase
 
         $this->Recaptcha->expects($this->once())
             ->method('apiCall')
-            ->will($this->returnValue('{"success":true}'));
+            ->willReturn('{"success":true}');
 
         $this->assertTrue($this->Recaptcha->verify());
 
